@@ -1,0 +1,77 @@
+/**
+ * Facebook Slide FanBox
+ * @license    GNU/GPL http://www.gnu.org/copyleft/gpl.html
+ * @link       http://facebooklikebox.net
+ */
+#likebox_1 {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border:5px solid #3c95d9;
+	background-color: #fff;
+	position: fixed;
+	display:block;
+	z-index:10000;
+}
+
+#likebox_1_1 {
+	overflow: hidden;
+	text-align: left;
+}
+
+#likebox_1 img {
+	position: absolute; 
+	top: 0px; 
+	cursor: pointer;
+	border: 0;
+}
+
+#likebox_1 iframe {
+	border:0px;
+	overflow: hidden; 
+	position: absolute;
+	width:100%;
+	height: 100%;
+}
+
+
+
+
+
+#likebox_2 {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border:5px solid #3c95d9;
+	background-color: #fff;
+	position: fixed;
+	display:block;
+	z-index:10000;
+}
+
+#likebox_2_2 {
+	overflow: hidden;
+	text-align: left;
+}
+
+#likebox_2 img {
+	position: absolute; 
+	top: 0px; 
+	cursor: pointer;
+	border: 0;
+}
+
+#likebox_2 iframe {
+	border:0px;
+	overflow: hidden; 
+	position: absolute;
+	width:100%;
+	height: 100%;
+}
+a.btn_yelow:link{
+	color: #f4932a;
+}
+a.btn_yelow:hover{
+	color: #337ab7;
+}
+

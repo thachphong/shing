@@ -1,0 +1,310 @@
+/* Create By Ngô Bảo Lâm */
+
+.car-rental-lable {
+    clear: both;
+    float: left;
+    line-height: 3;
+    width: 150px;
+}
+.car-rental-radio {
+    margin-top: 10px;
+}
+.car-rental-radio-sex {
+    float: left;
+}
+.car-rental-input {
+    padding: 5px 12px;
+    width: 200px;
+}
+#info-form {
+    float: left;
+    width: 45%;
+}
+#carrental-form {
+    float: left;
+    width: 55%;
+}
+.car-rental-title {
+    color: #FF8309;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 0 0 5px;
+    text-transform: uppercase;
+    width: 90%;
+}
+.carrental-button {
+    color: #FF8A0D;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 20px;
+}
+#info-resulf {
+    float: left;
+    width: 35%;
+}
+.resulf-lb {
+    clear: both;
+    float: left;
+    font-weight: bold;
+    line-height: 2;
+    width: 119px;
+}
+.resulf-value {
+    float: left;
+    font-style: italic;
+    line-height: 2;
+}
+#carrental-resulf {
+    float: left;
+    width: 35%;
+}
+.resulf-title {
+    color: #555555;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: 90%;
+	text-transform: uppercase;
+	color: #FF8309;
+}
+
+.lable-submit {
+    background: none repeat scroll 0 0 #DDDDDD;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+.car-rental-note {
+    font-size: 15px;
+    margin-left: 15px;
+    margin-top: 10px;
+}
+#carrental-price {
+    float: left;
+    width: 30%;
+}
+
+.text-note {
+    margin-bottom: 10px;
+    margin-left: 7px;
+}
+.resulf-total {
+    border-top: 6px dotted #CCCCCC;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+.warningnotice {
+    border-left: 5px solid #FF0000;
+    color: #FF0000;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-left: 12px;
+}
+.carrental-step1 {
+    background-color: #DEDEDE;
+    border: 1px solid #CCCCCC;
+   min-height: 340px;
+    float: left;
+    margin-right: 10px;
+    padding: 15px 20px 25px;
+    width: 45%;
+}
+.carrental-step2 {
+    background-color: #CCCCCC;
+    border: 1px solid #999999;
+
+    float: left;
+    padding: 15px 20px 25px;
+    width: 45%;
+}
+.step2-left {
+    float: left;
+    margin-bottom: 10px;
+    width: 50%;
+}
+.step2-right {
+    float: left;
+    width: 50%;
+}
+.unit-price {
+    border-top: 5px solid #CCCCCC;
+    clear: both;
+    padding-top: 10px;
+}
+.resulf-title.unit {
+    padding-left: 10px;
+    width: 80%;
+}
+.carrental-step2 .resulf-total {
+    margin-bottom: 45px !important;
+}
+.carrental-step2 form {
+    float: right;
+    margin-top: 10px;
+}
+.step3-left {
+    background-color: #DEDEDE;
+    border: 1px solid #CCCCCC;
+  
+    float: left;
+    margin-right: 10px;
+    padding: 15px 20px 25px;
+    width: 40%;
+}
+.step3-right {
+    background-color: #CCCCCC;
+    border: 1px solid #999999;
+	min-height: 260px;
+    float: left;
+    padding: 15px 20px 25px;
+    width: 50%;
+}
+
+
+
+
+.step5-left {
+    float: left;
+    margin: 0 0 0 10px;
+    width: 35%;
+}
+.step5-right {
+    float: left;
+    width: 64%;
+}
+.step > p {
+    background-image: url("../images/bg-top.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 30px;
+    padding: 25px 55px 0;
+}
+.crt-step .step {
+    background-color: #DEDEDE;
+    float: left;
+    margin-bottom: 20px;
+    padding: 12px 0 5px;
+}
+.note-success {
+    color: #FF8B10;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    text-align: center;
+}
+.carbutton.submit {
+    background-color: #FF8309;
+    background-image: url("../images/next.png");
+    background-position: right 5px center;
+    background-repeat: no-repeat;
+    background-size: 18px auto;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 30px 5px 5px;
+}
+.carbutton.reset {
+    background-color: #FF8309;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px;
+}
+.carbutton.goback {
+	background-color: #FF8309;
+    background-image: url("../images/back.png");
+    background-position: left 5px center;
+    background-repeat: no-repeat;
+    background-size: 18px auto;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 5px 5px 5px 30px;
+	margin-left: 20px;
+}
+.carrental-step4 {
+    background-color: #DEDEDE;
+    border: 1px solid #CCCCCC;
+   
+    float: left;
+    margin-right: 10px;
+    padding: 15px 20px 25px;
+    width: 40%;
+}
+.car-notes1 {
+    border: 1px solid #CCCCCC;
+    float: left;
+    min-height: 340px;
+    padding: 15px 20px 25px;
+    width: 45%;
+	line-height: 1.8;
+}
+.car-notes2 {
+    background-color: #CCCCCC;
+    border: 1px solid #999999;
+  line-height: 2;
+    float: left;
+    padding: 15px 20px 25px;
+    width: 50%;
+	min-height: 333px;
+}
+.carrental-step5 {
+    border: 1px solid #CCCCCC;
+    padding: 0 0 15px;
+}
+
+
+
+.step5-customer {
+    clear: both;
+    float: left;
+    padding: 0 0 20px 5%;
+    width: 30%;
+}
+.step5-infocarandday {
+    float: left;
+    width: 30%;
+	padding: 0 0 20px 0;
+}
+.step5-schedule {
+    float: left;
+    width: 30%;
+	padding: 0 0 20px 0;
+}
+.step5-quote {
+    clear: both;
+    float: left;
+    width: 30%;
+	padding: 0 0 0 5%;
+}
+.step5-pricetotal {
+    float: left;
+    width: 30%;
+}
+.step5-checkinfo {
+    background: none repeat scroll 0 0 #DDDDDD;
+    float: left;
+    line-height: 1.7;
+    padding: 10px;
+    width: 30%;
+}
+.bordern {
+    border-bottom: 1px solid #CCCCCC;
+    clear: both;
+    margin: 0 0 20px;
+}
+.resulf-value.total, .resulf-lb.total {
+    font-size: 16px;
+}
+.nresulf {
+    font-size: 13px;
+    line-height: 2.5;
+}
