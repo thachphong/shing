@@ -1,0 +1,56 @@
+	<%assign var='lang' value=Message_model::get_message('FOLDER')%>
+	<div class="series_wrap">
+		<div class="title_wrap clear_fix" style="padding-right: 15px">
+			<h2><img src="<%$smarty.const.ACW_BASE_URL%>shared/img/icon_file2.gif" /><%$lang['FOLD003']%><!--Thông tin thư mục--></h2>
+			<div style="float: right;">
+				<input type="button" id="category_close" value="<%$lang['FOLD004']%>" />
+				<input type="button" id="category_delete" value="<%$lang['FOLD005']%>" />
+				<input type="button" id="category_save" value="<%$lang['FOLD006']%>" />
+			</div>
+		</div>
+		<form id="category_form" class="scroll_form">
+		<input id="update_child" name="update_child" type="hidden" value="0"/>
+		<div class="info_wrap">
+			<div class="hl_wrap">
+				<h3><%$lang['FOLD007']%><!--Thông Tin cơ bản--></h3>
+				<!--<ul class="btn_wrap">
+					<li><input type="button" id="category_close" value="Đóng" /></li>
+					<li><input type="button" id="category_delete" value="Xóa" /></li>
+					<li><input type="button" id="category_save" value="Cập nhật" /></li>
+				</ul>-->
+			</div>
+			<table class="category_1">
+				<colgroup><col width="120px" /><col width="20px" /></colgroup>
+				<tr><th colspan="2"><%$lang['FOLD008']%><!--Tên thư mục--><span class="edit_require">*</span></th>
+				<td><input name="folder_name" type="text" size="30" value="<%$category_code%>"/></td>
+				</tr>
+				
+			</table>
+		</div>
+		<div class="info_wrap">
+			<div class="hl_wrap">
+				<h3><%$lang['FOLD010']%><!--Danh sách thư mục con--></h3>
+				<ul class="btn_wrap">
+					<li><input type="button" value="<%$lang['FOLD009']%>" id="section_add" /></li><!--Thêm folder con-->
+				</ul>
+			</div>
+			<table class="category_2" id="folder_list">
+				<colgroup><col width="200px" /><col width="20px" /></colgroup>
+				<%foreach $folder_child as $row%>
+				<tr> <td><%$row.folder_name%></td></tr>
+				<%/foreach%>
+			</table>
+		</div>		
+			<input type="hidden" name="parent_id" value="<%$parent_id%>">
+			<input type="hidden" name="my_id" value="<%$my_id%>">
+		</form>
+	</div><!-- / .series_wrap -->
+<script type='text/javascript'>
+$(function() {	
+
+		var wh = $(window).height();
+		
+		$('#category_form').height(wh - 205);
+	
+});
+</script>

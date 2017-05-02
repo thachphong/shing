@@ -1,0 +1,41 @@
+<div class="art-Header">
+   <h1><span class="keyw">thue xe tai mien tay, thue xe o can tho, thue xe mien tay, thue xe tien giang</span></h1>
+   <div class="art-Header-jpeg">     
+   </div>
+</div>
+<%assign var='menus' value=Menu_model::get_menus()%>
+<div class="art-nav">
+   <div class="l"></div>
+   <div class="r"></div>
+   <ul class="art-menu">
+   		<!--<li id="current" class="parent active item161">-->
+      <!--class="active"-->
+   	  <%foreach $menus as $key=>$item%>
+      
+      <li class="parent">
+         <a href="<%$smarty.const.ACW_BASE_URL%><%if $item.page_flg==1%>page/v/<%$item.link%><%else if $item.page_flg==2%>danhmuc/ds/<%$item.link%><%else if $item.page_flg==3%>tintuc/ds/<%$item.link%><%/if%>" ><span class="l"> </span><span class="r"> </span><span class="t"><%$item.menu_name%></span></a>
+         <%if $item.child_flg > 0%>
+         <ul>
+         	<%foreach $item.child as $sub1%>
+            <li class=""><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub1.page_flg==1%>page/v/<%$sub1.link%><%else if $sub1.page_flg==2%>danhmuc/ds/<%$sub1.link%><%else if $sub1.page_flg==3%>tintuc/ds/<%$sub1.link%><%/if%>"><%$sub1.menu_name%></a>
+            	<%if $sub1.child_flg > 0%>
+		         <ul>
+		         	<%foreach $sub1.child as $sub2%>
+		            <li class=""><a href="<%$smarty.const.ACW_BASE_URL%><%if $sub2.page_flg==1%>page/v/<%$sub2.link%><%else if $sub2.page_flg==2%>danhmuc/ds/<%$sub2.link%><%else if $sub2.page_flg==3%>tintuc/ds/<%$sub2.link%><%/if%>"><%$sub2.menu_name%></a>
+		            
+		            </li>
+		            
+		            <%/foreach%>
+		         </ul>
+		         <%/if%>
+            </li>            
+            <%/foreach%>
+         </ul>
+         <%/if%>
+      </li>
+	      <%if $key < count($menus)-1 %>
+	      	<li><span class="art-menu-separator"></span></li>
+	      <%/if%>
+      <%/foreach%>     
+   </ul>
+</div>

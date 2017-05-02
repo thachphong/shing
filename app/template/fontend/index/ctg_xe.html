@@ -1,0 +1,54 @@
+<%for $i=0 ; $i < count($dsxe) ;$i=$i+2 %>
+<tr>
+   <td style="width: 160px"><a mce_href="sanpham/<%$dsxe[$i]['pro_no']%>" href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$dsxe[$i]['pro_no']%>"><b><%$dsxe[$i]['pro_name']%></b></a><br></td>
+   <td rowspan="1" style="width: 205px"><b>THÔNG TIN CƠ BẢN</b></td>
+   <%if isset($dsxe[$i+1])%>
+   <td><a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$dsxe[$i+1]['pro_no']%>" mce_href="sanpham/<%$dsxe[$i]['pro_no']%>"><b><%$dsxe[$i+1]['pro_name']%></b></a><br mce_bogus="1"></td>
+   <td style="width: 205px">
+      <b>THÔNG TIN CƠ BẢN</b><br mce_bogus="1">
+   </td>
+   <%/if%>
+</tr>
+<tr>
+   <td colspan="1" style="width: 160px">
+   <a mce_href="/sanpham/<%$dsxe[$i]['pro_no']%>" href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$dsxe[$i]['pro_no']%>">
+   		<img src="<%$smarty.const.ACW_BASE_URL%><%$dsxe[$i]['img_path']%>" width="160">
+   	</a><br mce_bogus="1"></td>
+   <td rowspan="1">
+      <span style="color: #000000;" mce_style="color: #000000;">
+      <br><b>Hiệu: </b><%$dsxe[$i]['hieu_xe']%>      
+      <br><b>Đời xe: </b><%$dsxe[$i]['doi_xe']%>
+      <br><b>Kiểu xe: </b><%$dsxe[$i]['kieu_xe']%>
+      <br><b>Màu xe: </b><%$dsxe[$i]['mau_xe']%>
+      <%if strlen($dsxe[$i]['giathue_thang']) > 0%>
+      <br><b>Giá thuê tháng: </b><%Sanpham_model::currency_format($dsxe[$i]['giathue_thang'])%>vnđ<br>   
+      <%/if%>
+      <%if strlen($dsxe[$i]['giathue_ngay']) > 0%>
+      <br><b>Giá thuê ngày: </b><%Sanpham_model::currency_format($dsxe[$i]['giathue_ngay'])%>vnđ<br>   
+      <%/if%>    	
+      </span><br><br>
+      <div style="text-align: right;" mce_style="text-align: right;"><i><a mce_href="/sanpham/<%$dsxe[$i]['pro_no']%>" href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$dsxe[$i]['pro_no']%>" class="btn_yelow">Chi tiết<img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/an_link_chitiet.png" mce_src="/images/an_link_chitiet.png" alt=""></a></i><br mce_bogus="1"></div>
+   </td>
+   <%if isset($dsxe[$i+1])%>
+   <td colspan="1" style="width: 160px">
+   <a mce_href="/sanpham/<%$dsxe[$i+1]['pro_no']%>" href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$dsxe[$i+1]['pro_no']%>">
+   		<img src="<%$smarty.const.ACW_BASE_URL%><%$dsxe[$i+1]['img_path']%>" width="160">
+   	</a><br mce_bogus="1"></td>
+   <td rowspan="1">
+      <span style="color: #000000;" mce_style="color: #000000;">
+      <br><b>Hiệu: </b><%$dsxe[$i+1]['hieu_xe']%>      
+      <br><b>Đời xe: </b><%$dsxe[$i+1]['doi_xe']%>
+      <br><b>Kiểu xe: </b><%$dsxe[$i+1]['kieu_xe']%>
+      <br><b>Màu xe: </b><%$dsxe[$i+1]['mau_xe']%>
+      <%if strlen($dsxe[$i+1]['giathue_thang']) > 0%>
+      <br><b>Giá thuê tháng: </b><%Sanpham_model::currency_format($dsxe[$i+1]['giathue_thang'])%>vnđ<br>  
+      <%/if%>
+      <%if strlen($dsxe[$i+1]['giathue_ngay']) > 0%>
+      <br><b>Giá thuê ngày: </b><%Sanpham_model::currency_format($dsxe[$i+1]['giathue_ngay'])%>vnđ<br>   
+      <%/if%>     	
+      </span><br><br>
+      <div style="text-align: right;" mce_style="text-align: right;"><i><a class="btn_yelow" mce_href="/sanpham/<%$dsxe[$i+1]['pro_no']%>" href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$dsxe[$i+1]['pro_no']%>">Chi tiết<img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/an_link_chitiet.png" mce_src="/images/an_link_chitiet.png" alt=""></a></i><br mce_bogus="1"></div>
+   </td>
+   <%/if%>
+</tr>
+<%/for%>

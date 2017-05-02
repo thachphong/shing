@@ -1,0 +1,141 @@
+<div class="art-content-wide">
+   <div class="art-Post">      
+      <div class="art-Post-body">
+         <div class="art-Post-inner">
+            <div class="art-PostContent">
+               <!-- Start K2 Category Layout -->
+               <div id="k2Container" class="itemListView">
+                  <!-- Blocks for current category and subcategories -->
+                  <div class="itemListCategoriesBlock">
+                     <!-- Category block -->
+                     <div class="itemListCategory">
+                        <!-- Category description -->
+                        <p><br mce_bogus="1"></p>
+                        <!-- K2 Plugins: K2CategoryDisplay -->
+                        <div class="clr"></div>
+                     </div>
+                  </div>
+                  <!-- Item list -->
+                  <div class="itemList">
+                     <!-- Primary items -->
+                     <div id="itemListPrimary">
+                     	<%foreach $sanphams as $key=>$item%>
+                        <div class="itemContainer <%if ($key%2) == 1%>itemContainerLast<%/if%>" style="width:50.0%;">
+                           <!-- Start K2 Item Layout -->
+                           <div class="catItemView groupPrimary">
+                              <!-- Plugins: BeforeDisplay -->
+                              <!-- K2 Plugins: K2BeforeDisplay -->
+                              <div class="catItemHeader">
+                                 <!-- Item title -->
+                                 <h3 class="catItemTitle">
+                                    <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>">
+                                    <%$item.pro_name%></a>
+                                 </h3>
+                              </div>
+                              <!-- Plugins: AfterDisplayTitle -->
+                              <!-- K2 Plugins: K2AfterDisplayTitle -->
+                              <div class="catItemBody">
+                                 <!-- Plugins: BeforeDisplayContent -->
+                                 <!-- K2 Plugins: K2BeforeDisplayContent -->
+                                 <table width="90%">
+                                    <tbody>
+                                       <tr>
+                                          <td valign="top">
+                                             <!-- Item Image -->
+                                             <div class="catItemImageBlock">
+                                                <span class="catItemImage">
+                                                <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>" title="<%$item.pro_name%>">
+                                                <img src="<%$smarty.const.ACW_BASE_URL%><%$item.img_path%>" alt="<%$item.pro_name%>" style="width:150px; height:auto;">
+                                                </a>
+                                                </span>
+                                             </div>
+                                          </td>
+                                          <td valign="top">
+                                             <!-- Item extra fields -->
+                                             <div class="catItemExtraFields">
+                                                <h4>Thông tin về xe</h4>
+                                                <ul>
+                                                   <li class="even typeTextfield group1">
+                                                      <span class="catItemExtraFieldsLabel">Hiệu</span>
+                                                      <span class="catItemExtraFieldsValue"><%$item.hieu_xe%></span>
+                                                   </li>
+                                                   <li class="odd typeSelect group1">
+                                                      <span class="catItemExtraFieldsLabel">Đời xe</span>
+                                                      <span class="catItemExtraFieldsValue"><%$item.doi_xe%></span>
+                                                   </li>
+                                                   <li class="even typeSelect group1">
+                                                      <span class="catItemExtraFieldsLabel">Kiểu xe</span>
+                                                      <span class="catItemExtraFieldsValue"><%$item.kieu_xe%></span>
+                                                   </li>
+                                                   <li class="odd typeTextfield group1">
+                                                      <span class="catItemExtraFieldsLabel">Màu xe</span>
+                                                      <span class="catItemExtraFieldsValue"><%$item.mau_xe%></span>
+                                                   </li>
+                                                   <li class="even typeTextfield group1">
+                                                      <span class="catItemExtraFieldsLabel">Giá thuê tháng</span>
+                                                      <span class="catItemExtraFieldsValue"><%Sanpham_model::currency_format($item.giathue_thang)%></span>
+                                                   </li>
+                                                   <li class="odd typeTextfield group1">
+                                                      <span class="catItemExtraFieldsLabel">Ngày sử dụng</span>
+                                                      <span class="catItemExtraFieldsValue"><%$item.songay_sudung%></span>
+                                                   </li>
+                                                   <li class="even typeTextfield group1">
+                                                      <span class="catItemExtraFieldsLabel">Phụ trội ngoài giờ</span>
+                                                      <span class="catItemExtraFieldsValue"><%$item.phutroi_ngoaigio%></span>
+                                                   </li>
+                                                   <li class="odd typeTextfield group1">
+                                                      <span class="catItemExtraFieldsLabel">Phụ trội quá km</span>
+                                                      <span class="catItemExtraFieldsValue"><%$item.phutroi_quakm%></span>
+                                                   </li>
+                                                   <li class="even typeTextfield group1">
+                                                      <span class="catItemExtraFieldsLabel">Sử dụng cuối tuần</span>
+                                                      <span class="catItemExtraFieldsValue"><%$item.sudung_cuoituan%></span>
+                                                   </li>
+                                                   <li class="odd typeTextfield group1">
+                                                      <span class="catItemExtraFieldsLabel">Sử dụng lể tết</span>
+                                                      <span class="catItemExtraFieldsValue"><%$item.sudung_le%></span>
+                                                   </li>
+                                                </ul>
+                                             </div>
+                                          </td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                                 <div class="clr"></div>
+                                 <!-- Plugins: AfterDisplayContent -->
+                                 <!-- K2 Plugins: K2AfterDisplayContent -->
+                                 <div class="clr"></div>
+                              </div>
+                              <div class="clr"></div>
+                              <div class="clr"></div>
+                              <!-- Item "read more..." link -->
+                              <div class="catItemReadMore">
+                                 <a class="k2ReadMore btn_yelow" href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>" >
+                                 Chi tiết...		</a>
+                              </div>
+                              <div class="clr"></div>
+                              <!-- Plugins: AfterDisplay -->
+                              <!-- K2 Plugins: K2AfterDisplay -->
+                              <div class="clr"></div>
+                           </div>
+                           <!-- End K2 Item Layout -->
+                        </div>
+                        <%if ($key%2) == 1%>
+                        	<div class="clr"></div>
+                        <%/if%>
+                        <%/foreach%>
+                     </div>
+                  </div>
+                  <!-- Pagination -->
+                  <div class="k2Pagination">
+                     <div class="clr"></div>
+                  </div>
+               </div>
+               <!-- End K2 Category Layout -->
+               <!-- JoomlaWorks "K2" (v2.4.1) | Learn more about K2 at http://getk2.org -->
+            </div>
+            <div class="cleared"></div>
+         </div>
+      </div>
+   </div>
+</div>

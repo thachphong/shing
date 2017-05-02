@@ -1,0 +1,36 @@
+<!--<div class="art-content-wide">-->
+<style>
+a.news_title:link{
+	font-weight:bold;
+	font-size: 15px;
+	color: #f4932a;
+}
+a.news_title:hover{
+	color: #337ab7;
+}
+</style>
+<%foreach $tintucs as $key=>$item%>
+   <div class="art-Post">      
+      <div class="art-Post-body">
+         <div class="art-Post-inner">
+         	<table>
+         	<tr>
+         		<td> <a href="<%$smarty.const.ACW_BASE_URL%>tintuc/v/<%$item.news_no%>">
+         			<img src="<%$smarty.const.ACW_BASE_URL%><%$item.img_path%>" mce_src="/images/stories/bai-viet/hong-dan/bai-05/cac-diem-du-lich-noi-tieng-tai-ca-mau-2.jpg" width="200" style="float: left;margin:10px" height="120"></a>
+         		</td>
+         		<td>
+         			<span>
+<a href="<%$smarty.const.ACW_BASE_URL%>tintuc/v/<%$item.news_no%>" class="news_title"><%$item.news_name%></a></span>
+					<div class="art-PostContent">
+              			<%$item.des%>
+            		</div>
+            		<a class="btn_yelow" href="<%$smarty.const.ACW_BASE_URL%>tintuc/v/<%$item.news_no%>" style="float: right">
+  Chi&nbsp;tiết... </a>
+         		</td>
+         	</tr>
+         	</table> 
+         </div>
+      </div>
+   </div>
+<%/foreach%>
+<!--</div>-->

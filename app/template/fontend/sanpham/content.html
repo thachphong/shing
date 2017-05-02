@@ -1,0 +1,240 @@
+<div class="art-content-wide">
+   <div class="art-Post">
+      <div class="art-Post-tl"></div>
+      <div class="art-Post-tr"></div>
+      <div class="art-Post-bl"></div>
+      <div class="art-Post-br"></div>
+      <div class="art-Post-tc"></div>
+      <div class="art-Post-bc"></div>
+      <div class="art-Post-cl"></div>
+      <div class="art-Post-cr"></div>
+      <div class="art-Post-cc"></div>
+      <div class="art-Post-body">
+         <div class="art-Post-inner">
+            <div class="art-PostContent">
+               <!-- Start K2 Item Layout -->
+               <span id="startOfPageId12"></span>
+               <div id="k2Container" class="itemView">
+                  <!-- Plugins: BeforeDisplay -->
+                  <!-- K2 Plugins: K2BeforeDisplay -->
+                  <div class="itemHeader">
+                     <!-- Item title -->
+                     <h2 class="itemTitle">
+                        <%$pro.pro_name%>
+                     </h2>
+                  </div>
+                  <!-- Plugins: AfterDisplayTitle -->
+                  <!-- K2 Plugins: K2AfterDisplayTitle -->
+                  <div class="itemToolbar">
+                     <ul>
+                     </ul>
+                     <div class="clr"></div>
+                  </div>
+                  <div class="itemBody">
+                     <!-- Plugins: BeforeDisplayContent -->
+                     <!-- K2 Plugins: K2BeforeDisplayContent -->
+                     <!-- Item extra fields -->
+                    <table width="100%">
+					   <tbody>
+					      <tr>
+					         <td width="50%">
+					            <div class="itemExtraFields">
+					               <h3>Thông tin về xe</h3>
+					               <ul>
+					                  <li class="even typeTextfield group1">
+					                     <span class="itemExtraFieldsLabel">Hiệu:</span>
+					                     <span class="itemExtraFieldsValue"><%$pro.hieu_xe%></span>
+					                  </li>
+					                  <li class="odd typeSelect group1">
+					                     <span class="itemExtraFieldsLabel">Đời xe:</span>
+					                     <span class="itemExtraFieldsValue"><%$pro.doi_xe%></span>
+					                  </li>
+					                  <li class="even typeSelect group1">
+					                     <span class="itemExtraFieldsLabel">Kiểu xe:</span>
+					                     <span class="itemExtraFieldsValue"><%$pro.kieu_xe%></span>
+					                  </li>
+					                  <li class="odd typeTextfield group1">
+					                     <span class="itemExtraFieldsLabel">Màu xe:</span>
+					                     <span class="itemExtraFieldsValue"><%$pro.mau_xe%></span>
+					                  </li>
+					                  <%if strlen($pro.giathue_ngay)> 0%>
+					                  <li class="even typeTextfield group1">
+					                     <span class="itemExtraFieldsLabel">Giá thuê tháng:</span>
+					                     <span class="itemExtraFieldsValue"><%Sanpham_model::currency_format($pro.giathue_thang)%></span>
+					                  </li>
+					                  <%/if%>
+					                  <%if strlen($pro.giathue_ngay)> 0%>
+					                  <li class="even typeTextfield group1">
+					                     <span class="itemExtraFieldsLabel">Giá thuê ngày:</span>
+					                     <span class="itemExtraFieldsValue"><%Sanpham_model::currency_format($pro.giathue_ngay)%></span>
+					                  </li>
+					                  <%/if%>
+					                  <li class="odd typeTextfield group1">
+					                     <span class="itemExtraFieldsLabel">Ngày sử dụng:</span>
+					                     <span class="itemExtraFieldsValue"><%$pro.songay_sudung%> ngày</span>
+					                  </li>
+					                  <li class="even typeTextfield group1">
+					                     <span class="itemExtraFieldsLabel">Phụ trội ngoài giờ:</span>
+					                     <span class="itemExtraFieldsValue"><%Sanpham_model::currency_format($pro.phutroi_ngoaigio)%>đ/1h</span>
+					                  </li>
+					                  <li class="odd typeTextfield group1">
+					                     <span class="itemExtraFieldsLabel">Phụ trội quá km:</span>
+					                     <span class="itemExtraFieldsValue"><%Sanpham_model::currency_format($pro.phutroi_quakm)%>đ/1km</span>
+					                  </li>
+					                  <li class="even typeTextfield group1">
+					                     <span class="itemExtraFieldsLabel">Sử dụng cuối tuần:</span>
+					                     <span class="itemExtraFieldsValue"><%Sanpham_model::currency_format($pro.sudung_cuoituan)%>đ</span>
+					                  </li>
+					                  <li class="odd typeTextfield group1">
+					                     <span class="itemExtraFieldsLabel">Sử dụng lể tết:</span>
+					                     <span class="itemExtraFieldsValue">x <%$pro.sudung_le%>%</span>
+					                  </li>
+					               </ul>
+					            </div>
+					         </td>
+					         <td width="50%">
+					            <!-- Item video -->
+					            <%if strlen($pro.video_path)> 0%>
+					            <a name="itemVideoAnchor" id="itemVideoAnchor"></a>
+					            <div class="itemVideoBlock">
+					               <div class="itemVideoEmbedded">
+					                  <iframe width="400" height="225" src="http://www.youtube.com/embed/<%Sanpham_model::get_youtube_key($pro.video_path)%>" frameborder="0" allowfullscreen=""></iframe>		
+					               </div>
+					            </div>
+					            <%/if%>
+					         </td>
+					      </tr>
+					   </tbody>
+					</table>
+	  				<div class="itemFullText">
+                     <%nl2br($pro.content)%>
+                     </div>
+                     <div class="clr"></div>
+                  </div>
+                  <div class="itemLinks">
+                     <!-- Item tags -->
+                     <!--<div class="itemTagsBlock">
+                        <span>Tham khảo</span>
+                        <ul class="itemTags">
+                           <li><a href="/chon-xe-de-thue/thue-xe-thang/xe-oto-5-cho/itemlist/tag/thuê%20xe.html">thuê xe</a></li>
+                           <li><a href="/chon-xe-de-thue/thue-xe-thang/xe-oto-5-cho/itemlist/tag/xe%204%20chỗ.html">xe 4 chỗ</a></li>
+                           <li><a href="/chon-xe-de-thue/thue-xe-thang/xe-oto-5-cho/itemlist/tag/ford%20focus.html">ford focus</a></li>
+                        </ul>
+                        <div class="clr"></div>
+                     </div>-->
+                     <!-- Item social links -->
+                     <div class="itemSocialLinksBlock">
+                        <span>Chia sẻ</span>
+                        <ul class="itemSocialLinks">
+                           <!-- AddThis Button BEGIN -->
+                           <div class="addthis_toolbox addthis_default_style ">
+                              <a class="addthis_button_facebook addthis_button_preferred_1 at300b at300b" title="Preferred_1" href="#">
+                                 <span class="at-icon-wrapper" style="background-color: rgb(59, 89, 152); line-height: 16px; height: 16px; width: 16px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" title="Facebook" alt="Facebook" style="width: 16px; height: 16px;" class="at-icon at-icon-facebook">
+                                       <g>
+                                          <path d="M22 5.16c-.406-.054-1.806-.16-3.43-.16-3.4 0-5.733 1.825-5.733 5.17v2.882H9v3.913h3.837V27h4.604V16.965h3.823l.587-3.913h-4.41v-2.5c0-1.123.347-1.903 2.198-1.903H22V5.16z" fill-rule="evenodd"></path>
+                                       </g>
+                                    </svg>
+                                 </span>
+                              </a>
+                              <a class="addthis_button_twitter addthis_button_preferred_2 at300b at300b" title="Preferred_2" href="#">
+                                 <span class="at-icon-wrapper" style="background-color: rgb(29, 161, 242); line-height: 16px; height: 16px; width: 16px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" title="Twitter" alt="Twitter" style="width: 16px; height: 16px;" class="at-icon at-icon-twitter">
+                                       <g>
+                                          <path d="M27.996 10.116c-.81.36-1.68.602-2.592.71a4.526 4.526 0 0 0 1.984-2.496 9.037 9.037 0 0 1-2.866 1.095 4.513 4.513 0 0 0-7.69 4.116 12.81 12.81 0 0 1-9.3-4.715 4.49 4.49 0 0 0-.612 2.27 4.51 4.51 0 0 0 2.008 3.755 4.495 4.495 0 0 1-2.044-.564v.057a4.515 4.515 0 0 0 3.62 4.425 4.52 4.52 0 0 1-2.04.077 4.517 4.517 0 0 0 4.217 3.134 9.055 9.055 0 0 1-5.604 1.93A9.18 9.18 0 0 1 6 23.85a12.773 12.773 0 0 0 6.918 2.027c8.3 0 12.84-6.876 12.84-12.84 0-.195-.005-.39-.014-.583a9.172 9.172 0 0 0 2.252-2.336" fill-rule="evenodd"></path>
+                                       </g>
+                                    </svg>
+                                 </span>
+                              </a>
+                              <a class="addthis_button_print addthis_button_preferred_3 at300b at300b" title="Preferred_3" href="#" target="_blank">
+                                 <span class="at-icon-wrapper" style="background-color: rgb(115, 138, 141); line-height: 16px; height: 16px; width: 16px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" title="Print" alt="Print" style="width: 16px; height: 16px;" class="at-icon at-icon-print">
+                                       <g>
+                                          <path d="M24.67 10.62h-2.86V7.49H10.82v3.12H7.95c-.5 0-.9.4-.9.9v7.66h3.77v1.31L15 24.66h6.81v-5.44h3.77v-7.7c-.01-.5-.41-.9-.91-.9zM11.88 8.56h8.86v2.06h-8.86V8.56zm10.98 9.18h-1.05v-2.1h-1.06v7.96H16.4c-1.58 0-.82-3.74-.82-3.74s-3.65.89-3.69-.78v-3.43h-1.06v2.06H9.77v-3.58h13.09v3.61zm.75-4.91c-.4 0-.72-.32-.72-.72s.32-.72.72-.72c.4 0 .72.32.72.72s-.32.72-.72.72zm-4.12 2.96h-6.1v1.06h6.1v-1.06zm-6.11 3.15h6.1v-1.06h-6.1v1.06z"></path>
+                                       </g>
+                                    </svg>
+                                 </span>
+                              </a>
+                              <a class="addthis_button_email addthis_button_preferred_4 at300b at300b" target="_blank" title="Preferred_4" href="#">
+                                 <span class="at-icon-wrapper" style="background-color: rgb(132, 132, 132); line-height: 16px; height: 16px; width: 16px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" title="Email" alt="Email" style="width: 16px; height: 16px;" class="at-icon at-icon-email">
+                                       <g>
+                                          <g fill-rule="evenodd"></g>
+                                          <path d="M27 22.757c0 1.24-.988 2.243-2.19 2.243H7.19C5.98 25 5 23.994 5 22.757V13.67c0-.556.39-.773.855-.496l8.78 5.238c.782.467 1.95.467 2.73 0l8.78-5.238c.472-.28.855-.063.855.495v9.087z"></path>
+                                          <path d="M27 9.243C27 8.006 26.02 7 24.81 7H7.19C5.988 7 5 8.004 5 9.243v.465c0 .554.385 1.232.857 1.514l9.61 5.733c.267.16.8.16 1.067 0l9.61-5.733c.473-.283.856-.96.856-1.514v-.465z"></path>
+                                       </g>
+                                    </svg>
+                                 </span>
+                              </a>
+                              <a class="addthis_button_compact at300m" href="#">
+                                 <span class="at-icon-wrapper" style="background-color: rgb(255, 101, 80); line-height: 16px; height: 16px; width: 16px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" title="More" alt="More" style="width: 16px; height: 16px;" class="at-icon at-icon-addthis">
+                                       <g>
+                                          <path d="M18 14V8h-4v6H8v4h6v6h4v-6h6v-4h-6z" fill-rule="evenodd"></path>
+                                       </g>
+                                    </svg>
+                                 </span>
+                              </a>
+                              <a class="addthis_counter addthis_bubble_style"></a>
+                           </div>
+                           <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-502c786b3a9faa34"></script>
+                           <!-- AddThis Button END -->
+                        </ul>
+                        <div class="clr"></div>
+                     </div>
+                     <div class="clr"></div>
+                  </div>
+                  <!-- Latest items from author -->
+                  <div class="itemAuthorLatest">
+                     <h3>Các dòng xe liên quan khác </h3>
+                     <ul>
+                     	<%foreach $relates as $key=>$item%>
+                        <li class="even">
+                           <a href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$item.pro_no%>"><%$item.pro_name%></a>
+                        </li>
+                        <%/foreach%>
+                        <!--<li class="odd">
+                           <a href="/chon-xe-de-thue/thue-xe-dam-cuoi/item/75-cho-thuê-xe-daewoo-lacetti.html">Cho thuê xe Daewoo Lacetti </a>
+                        </li>
+                        <li class="even">
+                           <a href="/chon-xe-de-thue/thue-xe-dam-cuoi/item/74-cho-thuê-xe-camry.html">Cho thuê xe Camry</a>
+                        </li>
+                        <li class="odd">
+                           <a href="/chon-xe-de-thue/thue-xe-dam-cuoi/item/73-cho-thuê-xe-toyota-vios.html">Cho thuê xe Toyota Vios</a>
+                        </li>
+                        <li class="even">
+                           <a href="/chon-xe-de-thue/thue-xe-dam-cuoi/item/72-cho-thuê-xe-kia-forte.html">Cho thuê xe Kia Forte</a>
+                        </li>
+                        <li class="odd">
+                           <a href="/chon-xe-de-thue/thue-xe-dam-cuoi/item/71-cho-thuê-xe-toyota-altis.html">Cho thuê xe Toyota-Altis</a>
+                        </li>
+                        <li class="even">
+                           <a href="/chon-xe-de-thue/thue-xe-dam-cuoi/item/70-cho-thuê-xe-honda-civic.html">Cho thuê xe Honda Civic</a>
+                        </li>
+                        <li class="odd">
+                           <a href="/chon-xe-de-thue/thue-xe-dam-cuoi/item/69-cho-thuê-xe-lexus-mui-trần.html">Cho thuê xe Lexus mui trần</a>
+                        </li>
+                        <li class="even">
+                           <a href="/chon-xe-de-thue/thue-xe-dam-cuoi/item/68-cho-thuê-xe-mercedes-e200-c250-c200.html">Cho thuê xe Mercedes E200-C250-C200 </a>
+                        </li>
+                        <li class="odd">
+                           <a href="/chon-xe-de-thue/thue-xe-dam-cuoi/item/67-cho-thuê-xe-chevrolet-cruze.html">Cho thuê xe Chevrolet Cruze</a>
+                        </li>-->
+                     </ul>
+                     <div class="clr"></div>
+                  </div>
+                  <div class="clr"></div>
+                  <!-- Plugins: AfterDisplay -->
+                  <!-- K2 Plugins: K2AfterDisplay -->
+                  <div class="itemBackToTop">
+                     <a class="k2Anchor" href="<%$smarty.const.ACW_BASE_URL%>sanpham/v/<%$pro.pro_no%>#startOfPageId12">BACK TO TOP</a>
+                  </div>
+                  <div class="clr"></div>
+               </div>
+               <!-- End K2 Item Layout -->               
+            </div>
+            <div class="cleared"></div>
+         </div>
+      </div>
+   </div>
+</div>

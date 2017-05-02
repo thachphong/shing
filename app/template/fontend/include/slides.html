@@ -1,0 +1,18 @@
+<%assign var='slides' value=Slides_model::get_slides()%>
+<div class="vtem_wapper">
+   <img id="vtloader" src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/loader.gif" alt="loading" style="display:none;">
+   <div id="slideshow1" class="slidemain" style="background-image: url(&quot;<%$smarty.const.ACW_BASE_URL%><%$slides[0]['img_path']%>&quot;); width: 1000px; height: 250px; position: relative; background-position: left top;">
+   	<%foreach $slides as $item%>
+      <img src="<%$smarty.const.ACW_BASE_URL%><%$item.img_path%>" alt="VTEM Slideshow" style="display: none;">
+    <%/foreach%>  
+    <div style="clear:both"></div>
+   </div>
+   <div class="vtem_button">
+      <div id="ft-buttons-slideshow1" style="text-align: right;">
+      	<a href="<%$smarty.const.ACW_BASE_URL%>#" class="ft-button-slideshow1" style="color: rgb(102, 102, 102);">1</a>
+      	<a href="<%$smarty.const.ACW_BASE_URL%>#" class="ft-button-slideshow1 ft-button-slideshow1-active" style="color: rgb(102, 102, 102);">2</a>
+      	<a href="<%$smarty.const.ACW_BASE_URL%>#" class="ft-button-slideshow1" style="color: rgb(102, 102, 102);">3</a>
+      	<a href="<%$smarty.const.ACW_BASE_URL%>#" class="ft-button-slideshow1" style="color: rgb(102, 102, 102);">4</a>
+      </div>
+   </div>
+</div>
