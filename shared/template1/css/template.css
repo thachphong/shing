@@ -103,8 +103,8 @@ body
 	margin: 0 auto;
 	padding: 0;
 	background-color: #efefef;
-	/*background-image: url('../images/bg.jpg');
-	background-repeat: no-repeat;*/
+	/*background-image: url('../images/bg.jpg');*/
+	background-repeat: no-repeat;
 }
 
 #art-main
@@ -116,7 +116,7 @@ body
 }
 
 .atss {
-    top: 150px !important;
+    top: 150px !important;MenuItem2.png
 }
 
 
@@ -786,7 +786,7 @@ div.art-Header-jpeg
 {
 	display:inline-block;
 	background-position:left top;
-	background-image: url('../images/BlockHeaderIcon.png');
+	/*background-image: url('../images/BlockHeaderIcon.png');*/
 	padding:0 0 0 12px;
 	background-repeat: no-repeat;
 	min-height: 12px;
