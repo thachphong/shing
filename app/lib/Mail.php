@@ -12,7 +12,7 @@ class Mail_lib extends PHPMailer_lib
 	// Construct function
 	public function __construct($info = null) {
 	    //Tell PHPMailer to use SMTP
-	    $this->isSMTP();
+	    /*$this->isSMTP();
 	    
 	    //Enable SMTP debugging
 	    // 0 = off (for production use)
@@ -40,7 +40,27 @@ class Mail_lib extends PHPMailer_lib
 	                    $this->Port = $info['port'];
 	                }
 	        }
-	    }
+	    }*/
+	    
+        $this->IsSMTP(); // set mailer to use SMTP 
+        $this->SMTPDebug = 0;
+        $this->Host = "smtp.gmail.com"; // specify main and backup server 
+        $this->Port = 465; // set the port to use 
+        $this->SMTPAuth = true; // turn on SMTP authentication 
+		//$this->CharSet = "utf-8";	
+        $this->SMTPSecure = 'ssl'; 
+        //$this->WordWrap = 50; // set word wrap 
+        //$this->IsHTML(true); // send as HTML 
+		$this->Username = 'laptrinhphanmem2015@gmail.com';		
+		//$this->mail->Username = "hoanghoangnguyen788@gmail.com";
+		$this->Password ='thietkeweb2s.com';
+		//$this->mail->Password  = "221292682";          
+
+        $this->From = PHPMAIL_EMAIL_REPLYTO;
+
+        $this->FromName = PHPMAIL_NAME_REPLYTO;                 
+
+        $this->AddReplyTo(PHPMAIL_EMAIL_REPLYTO,PHPMAIL_NAME_REPLYTO); 
 	}
 
 	public function loadBody($file) {

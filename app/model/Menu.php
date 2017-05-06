@@ -289,16 +289,16 @@ class Menu_model extends ACWModel
 				from menu
 				where menu_level = 1)
 				union
-				select m.* , CONCAT(m1.sort2,'_',LPAD(m.sort,5,'0'),'_',LPAD(m.menu_id,5,'0')) sort2
+				(select m.* , CONCAT(m1.sort2,'_',LPAD(m.sort,5,'0'),'_',LPAD(m.menu_id,5,'0')) sort2
 				from 
 				menu m,
 				(select * ,CONCAT(LPAD(sort,5,'0'),'_',LPAD(menu_id,5,'0'))   sort2
 				from menu m
 				where menu_level = 1) m1
 				where m.parent_id = m1.menu_id
-				and m.menu_level = 2 
+				and m.menu_level = 2 )
 				union
-				select m3.*, CONCAT(m2.sort2,'_',LPAD(m3.sort,5,'0'),'_',LPAD(m3.menu_id,5,'0')) sort2
+				(select m3.*, CONCAT(m2.sort2,'_',LPAD(m3.sort,5,'0'),'_',LPAD(m3.menu_id,5,'0')) sort2
 				from menu m3,
 				(select m.* , CONCAT(m1.sort2,'_',LPAD(m.sort,5,'0'),'_',LPAD(m.menu_id,5,'0')) sort2
 				from 
@@ -309,7 +309,7 @@ class Menu_model extends ACWModel
 				where m.parent_id = m1.menu_id
 				and m.menu_level = 2 ) m2
 				where m3.parent_id = m2.menu_id
-				and m3.menu_level = 3
+				and m3.menu_level = 3)
 
 				) t
 				ORDER BY t.sort2";

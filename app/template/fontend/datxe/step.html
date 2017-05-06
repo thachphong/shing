@@ -14,35 +14,43 @@
              }
          }
       </script>
+      <style>         	
+            .step.img_car {
+	            background-image: url("<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/car.png");
+	            background-position: center top 10px;
+	            background-repeat: no-repeat;
+	            background-size: 55px auto;
+            }
+            .step.img_done{
+	            background-image: url(modules/mod_lun_carrental/assets/img/done.png) !important;
+			    background-position: center top 5px !important;
+			    background-repeat: no-repeat;
+			    background-size: 30px auto !important;   
+		    }         
+      </style>
       <div class="crt-step">
-         <div class="step crt-step1">
+         <div class="step crt-step1 <%if $step==1 || $step==2%>img_car<%else if $step > 2%>img_done<%/if%>">
             <p>Thông tin đặt xe</p>
          </div>
-         <div class="step crt-step2">
+         <div class="step crt-step2 <%if $step==3%>img_car<%else if $step > 3%>img_done<%/if%>">
             <p>Thông tin lộ trình</p>
          </div>
-         <div class="step crt-step3">
+         <div class="step crt-step3 <%if $step==4%>img_car<%else if $step > 4%>img_done<%/if%>">
             <p>Thông tin khách hàng</p>
          </div>
-         <div class="step crt-step4">
+         <div class="step crt-step4 <%if $step==5%>img_car<%else if $step > 5%>img_done<%/if%>">
             <p>Kiểm tra thông tin</p>
          </div>
-         <div class="step crt-step5">
+         <div class="step crt-step5 <%if $step==6%>img_car<%/if%>">
             <p>Hoàn tất</p>
          </div>
       </div>
       <div class="clr"></div>
       <div class="clr"></div>
+      
       <%if $step==1 || $step==2%>
       <form class="carrental-step1" style="display: block;" method="post" action="<%$smarty.const.ACW_BASE_URL%>datxe/step1">
-         <style>
-            .step.crt-step1 {
-            background-image: url("<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/car.png");
-            background-position: center top 10px;
-            background-repeat: no-repeat;
-            background-size: 55px auto;
-            }
-         </style>
+         
          <div class="car-rental-title">Thông tin đặt xe</div>
          <div class="car-rental-lable">Loại xe (*) : </div>
          <select class="car-rental-select" name="kieu_xe" required="required">
@@ -198,17 +206,17 @@
       </div>
       <%/if%>
       <%if $step==3%>
-      <form class="carrental-step3" style="display: none;" method="post" action="">
+      <form class="carrental-step3" style="display: block;" method="post" action="<%$smarty.const.ACW_BASE_URL%>datxe/step3">
          <div class="step3-left">
             <div class="car-rental-title">Thông tin lộ trình</div>
             <div class="car-rental-lable">Địa điểm đón (*) : </div>
-            <input class="car-rental-input" name="placeofmeeting" type="text" placeholder="Nhập địa điểm đón..." value="" required="required">
+            <input class="car-rental-input" name="diadiem_don" type="text" placeholder="Nhập địa điểm đón..." value="" required="required">
             <div class="clr"></div>
             <div class="car-rental-lable">Nơi đến (*) : </div>
-            <input class="car-rental-input" name="whereto" type="text" placeholder="Nhập nơi cần đến..." value="" required="required">
+            <input class="car-rental-input" name="noi_den" type="text" placeholder="Nhập nơi cần đến..." value="" required="required">
             <div class="clr"></div>
             <div class="car-rental-lable">Địa điểm về (*) : </div>
-            <input class="car-rental-input" name="location" type="text" placeholder="Nhập địa điểm về..." value="" required="required">
+            <input class="car-rental-input" name="diadiem_ve" type="text" placeholder="Nhập địa điểm về..." value="" required="required">
             <div class="clr"></div>
             <br>
             <div style="line-height: 1.6;">Nếu quý khách đón (trả) hơn 1 điểm.<br><b>luhanhmientay.vn</b> sẽ phụ thu thêm 100.000 VNĐ/điểm đón (trả)</div>
@@ -232,7 +240,7 @@
                <div class="resulf-lb">Ngày đi : </div>
                <div class="resulf-value"><%$ngay_di%></div>
                <div class="resulf-lb">Giờ đi : </div>
-               <div class="resulf-value"><%$gio_id%>:<%$phut_di%> <%$ampm_di%></div>
+               <div class="resulf-value"><%$gio_di%>:<%$phut_di%> <%$ampm_di%></div>
                <div class="resulf-lb">Ngày về : </div>
                <div class="resulf-value"><%$ngay_ve%></div>
                <div class="resulf-lb">Giờ về : </div>
@@ -242,6 +250,14 @@
             </div>
             <div class="step2-right">
                <div class="resulf-title unit">Báo giá</div>
+               <%if phucap_taixe > 0%>
+               <div class="resulf-lb">Phụ cấp cho tài xế </div>
+               <div class="resulf-value"><%Sanpham_model::currency_format($phucap_taixe)%> VNĐ</div>
+               <%/if%>
+               <%if phucap_taixe > 0%>
+               <div class="resulf-lb">Phí vượt ngày </div>
+               <div class="resulf-value"><%Sanpham_model::currency_format($phi_vuotngay)%> VNĐ</div>
+               <%/if%>
                <div class="resulf-lb">Giá <i>(Tính theo KM)</i> : </div>
                <div class="resulf-value"><%Sanpham_model::currency_format($gia_km)%> VNĐ</div>
                <div class="clr"></div>
@@ -253,26 +269,27 @@
          </div>
       </form>
       <%/if%>
-      <form class="carrental-step4" style="display: none;" method="post" action="">
+      <%if $step==4%>
+      <form class="carrental-step4" style="display: block;" method="post" action="<%$smarty.const.ACW_BASE_URL%>datxe/step4">
          <div class="car-rental-title">Thông tin khách hàng</div>
          <div class="car-rental-lable">Họ &amp; tên (*) : </div>
-         <input class="car-rental-input" name="fullname" type="text" placeholder="Nhập họ &amp; tên..." value="" required="required">
+         <input class="car-rental-input" name="ho_ten" type="text" placeholder="Nhập họ &amp; tên..." value="" required="required">
          <div class="clr"></div>
          <div class="car-rental-lable">Giới tính (*) : </div>
-         <div class="car-rental-radio-sex"><input class="car-rental-radio girl" type="radio" name="sex" value="Nữ" required="">Nữ</div>
-         <div class="car-rental-radio-sex"><input class="car-rental-radio boy" type="radio" name="sex" value="Nam">Nam</div>
+         <div class="car-rental-radio-sex"><input class="car-rental-radio girl" type="radio" name="gioi_tinh" value="Nữ" required="">Nữ</div>
+         <div class="car-rental-radio-sex"><input class="car-rental-radio boy" type="radio" name="gioi_tinh" value="Nam">Nam</div>
          <div class="clr"></div>
          <div class="car-rental-lable">Ngày sinh (*) : </div>
-         <input type="text" class="car-rental-input" name="birthday" placeholder="Nhập ngày tháng năm sinh..." value="" required="required">
+         <input type="text" class="car-rental-input" name="ngay_sinh" placeholder="Nhập ngày tháng năm sinh..." value="" required="required">
          <div class="clr"></div>
          <div class="car-rental-lable">Địa chỉ (*) : </div>
-         <input class="car-rental-input" name="address" type="text" placeholder="Nhập địa chỉ..." value="" required="required">
+         <input class="car-rental-input" name="dia_chi" type="text" placeholder="Nhập địa chỉ..." value="" required="required">
          <div class="clr"></div>
          <div class="car-rental-lable">CMND (*) : </div>
          <input class="car-rental-input" name="cmnd" type="text" placeholder="Nhập số CMND..." value="" required="required">
          <div class="clr"></div>
          <div class="car-rental-lable">Số điện thoại (*) : </div>
-         <input class="car-rental-input" name="phonenumber" type="text" placeholder="Nhập số điện thoại..." value="" required="required"> 
+         <input class="car-rental-input" name="dien_thoai" type="text" placeholder="Nhập số điện thoại..." value="" required="required"> 
          <div class="clr"></div>
          <div class="car-rental-lable">Email (*) : </div>
          <input class="car-rental-input" name="email" type="text" placeholder="Nhập địa chỉ email..." value="" required="required">
@@ -285,7 +302,8 @@
          <input type="reset" class="carbutton step4 reset" value="Nhập lại">
          <input type="submit" class="carbutton step4 submit" name="submit-step4" value="Tiếp tục">
       </form>
-      <div class="car-notes2" style="display: none;">
+      
+      <div class="car-notes2" style="display: block;">
          <div class="car-rental-title">Ghi chú</div>
          <center>
             <img src="/modules/mod_lun_carrental/assets/img/infouser.png" width="200">
@@ -293,59 +311,70 @@
          - Để thuận tiện cho việc liên hệ. Quý khách vui lòng nhập đầy đủ và chính xác các thông tin để nhân viên chúng tôi có thể liên hệ với quý khách một cách nhanh chóng nhất.<br>
          <div style="float: right;">Xin chân thành cảm ơn.</div>
       </div>
-      <div class="carrental-step5" style="display: none;">
+      <%/if%>
+      <%if $step==5%>
+      <div class="carrental-step5" style="display: block;">
          <div class="lable-submit">Xác nhận thông tin</div>
          <div class="step5-customer">
             <div class="resulf-title">Thông tin cá nhân</div>
             <div class="resulf-lb">Họ &amp; tên : </div>
-            <div class="resulf-value"></div>
+            <div class="resulf-value"><%$ho_ten%></div>
             <div class="resulf-lb">Giới tính : </div>
-            <div class="resulf-value"></div>
+            <div class="resulf-value"><%$gioi_tinh%></div>
             <div class="resulf-lb">Ngày sinh : </div>
-            <div class="resulf-value"></div>
+            <div class="resulf-value"><%$ngay_sinh%></div>
             <div class="resulf-lb">CMND : </div>
-            <div class="resulf-value"></div>
+            <div class="resulf-value"><%$cmnd%></div>
             <div class="resulf-lb">Địa chỉ : </div>
-            <div class="resulf-value"></div>
+            <div class="resulf-value"><%$dia_chi%></div>
             <div class="resulf-lb">Số điện thoại : </div>
-            <div class="resulf-value"></div>
+            <div class="resulf-value"><%$dien_thoai%></div>
             <div class="resulf-lb">Email : </div>
-            <div class="resulf-value"></div>
+            <div class="resulf-value"><%$email%></div>
          </div>
          <div class="step5-infocarandday">
             <div class="resulf-title">Thông tin xe &amp; ngày đi</div>
             <div class="resulf-lb">Loại xe : </div>
-            <div class="resulf-value"> Chỗ</div>
+            <div class="resulf-value"><%$kieu_xe%></div>
             <div class="resulf-lb">Ngày đi : </div>
-            <div class="resulf-value"></div>
+            <div class="resulf-value"><%$ngay_di%></div>
             <div class="resulf-lb">Giờ đi : </div>
-            <div class="resulf-value">: </div>
+            <div class="resulf-value"><%$gio_di%>:<%$phut_di%> <%$ampm_di%></div>
             <div class="resulf-lb">Ngày về : </div>
-            <div class="resulf-value"></div>
+            <div class="resulf-value"><%$ngay_ve%></div>
             <div class="resulf-lb">Giờ về : </div>
-            <div class="resulf-value">: </div>
+            <div class="resulf-value"><%$gio_ve%>:<%$phut_ve%> <%$ampm_ve%></div>
          </div>
          <div class="step5-schedule">
             <div class="resulf-title">Lịch trình di chuyển</div>
             <div class="resulf-lb">Địa điểm đón : </div>
-            <div class="resulf-value"></div>
+            <div class="resulf-value"><%$diadiem_don%></div>
             <div class="resulf-lb">Nơi đến : </div>
-            <div class="resulf-value"></div>
+            <div class="resulf-value"><%$noi_den%></div>
             <div class="resulf-lb">Địa điểm về : </div>
-            <div class="resulf-value"></div>
+            <div class="resulf-value"><%$diadiem_ve%></div>
             <div class="resulf-lb">Số KM : </div>
-            <div class="resulf-value"> KM</div>
+            <div class="resulf-value"><%$so_km%> KM</div>
          </div>
          <div class="bordern"></div>
          <div class="step5-quote">
             <div class="resulf-title">Báo giá chi tiết</div>
-            <div class="resulf-lb">Đơn giá (Tính theo KM) : </div>
-            <div class="resulf-value"> VNĐ</div>
+            <div class="resulf-lb">Đơn giá (Tính theo KM) : </div>            
+            <div class="resulf-value"><%Sanpham_model::currency_format($gia_km)%> VNĐ</div>
+            <%if $phi_vuotngay > 0%>
+            <div class="resulf-lb">Phí vượt ngày : </div>
+            <div class="resulf-value"><%Sanpham_model::currency_format($phi_vuotngay)%> VNĐ</div>
+            <%/if%>
+            <%if $phucap_taixe > 0%>
+            <div class="resulf-lb">Phụ cấp cho tài xế : </div>
+            <div class="resulf-value"><%Sanpham_model::currency_format($phucap_taixe)%> VNĐ</div>
+            <%/if%>
          </div>
+         
          <div class="step5-pricetotal">
             <div class="resulf-title">Tổng cộng</div>
             <div class="resulf-lb total">Tổng cộng : </div>
-            <div class="resulf-value total"><b> VNĐ</b></div>
+            <div class="resulf-value total"><b><%Sanpham_model::currency_format($tong_tien)%> VNĐ</b></div>
          </div>
          <div class="step5-checkinfo">
             - Quý khách vui lòng kiểm tra lại thông tin lần cuối trước khi nhấn vào nút "Đặt xe".<br>
@@ -354,9 +383,9 @@
          </div>
          <div class="clr"></div>
          <br>
-         <form method="post" action="">
+         <form method="post" action="<%$smarty.const.ACW_BASE_URL%>datxe/step5">
             <div class="car-rental-note"><b>Thông tin thêm</b> <i>(Quý khách có thêm yêu cầu cần chúng tôi lưu ý. Vui lòng nhập vào đây)</i></div>
-            <textarea rows="4" class="text-note" cols="120" name="carrentalnote"></textarea>
+            <textarea rows="4" class="text-note" cols="120" name="ghi_chu"></textarea>
             <div class="clr"></div>
             <input type="hidden" name="data_step5" value="">
             <input type="hidden" name="price_step5" value="">
@@ -367,5 +396,11 @@
             <input type="submit" class="carbutton step5 submit" name="submit-step5" value="Đặt xe">
          </form>
       </div>
+      <%/if%> 
+      <%if $step==6%>     
+      <div class="note-success">ĐẶT XE THÀNH CÔNG</div>
+<div class="nresulf">- Cảm ơn quý khách đã tin dùng dịch vụ thuê xe của <b>luhanhmientay.vn</b><br />- Nhân viên điều khiển của <b>luhanhmientay.vn</b> sẽ liên hệ với quý khách trong thời gian sớm nhất để xác nhận thông tin đặt xe.<br />- <b>luhanhmientay.vn</b> xin chân thành cảm ơn quý khách !<br /><br /><br /></div>
+<div class="clr"></div>
+      <%/if%>
    </div>
 </div>

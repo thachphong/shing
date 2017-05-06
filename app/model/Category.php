@@ -277,16 +277,16 @@ class Category_model extends ACWModel
 				from category
 				where ctg_level = 1 and news_flg = $news_flg)
 				union
-				select m.* , CONCAT(m1.sort2,'_',LPAD(m.sort,5,'0'),'_',LPAD(m.ctg_id,5,'0')) sort2
+				(select m.* , CONCAT(m1.sort2,'_',LPAD(m.sort,5,'0'),'_',LPAD(m.ctg_id,5,'0')) sort2
 				from 
 				category m,
 				(select * ,CONCAT(LPAD(sort,5,'0'),'_',LPAD(ctg_id,5,'0'))   sort2
 				from category m
 				where ctg_level = 1 and news_flg = $news_flg) m1
 				where m.parent_id = m1.ctg_id
-				and m.ctg_level = 2 
+				and m.ctg_level = 2) 
 				union
-				select m3.*, CONCAT(m2.sort2,'_',LPAD(m3.sort,5,'0'),'_',LPAD(m3.ctg_id,5,'0')) sort2
+				(select m3.*, CONCAT(m2.sort2,'_',LPAD(m3.sort,5,'0'),'_',LPAD(m3.ctg_id,5,'0')) sort2
 				from category m3,
 				(select m.* , CONCAT(m1.sort2,'_',LPAD(m.sort,5,'0'),'_',LPAD(m.ctg_id,5,'0')) sort2
 				from 
@@ -297,7 +297,7 @@ class Category_model extends ACWModel
 				where m.parent_id = m1.ctg_id
 				and m.ctg_level = 2 ) m2
 				where m3.parent_id = m2.ctg_id
-				and m3.ctg_level = 3
+				and m3.ctg_level = 3)
 
 				) t
 				ORDER BY t.sort2";
@@ -419,7 +419,7 @@ class Category_model extends ACWModel
 				from category x
 				where ctg_level = 1 and news_flg = $news_flg)
 				union
-				select m.* , CONCAT(m1.sort2,'_',LPAD(m.sort,5,'0'),'_',LPAD(m.ctg_id,5,'0')) sort2,
+				(select m.* , CONCAT(m1.sort2,'_',LPAD(m.sort,5,'0'),'_',LPAD(m.ctg_id,5,'0')) sort2,
 				(SELECT count(*) from category where parent_id = m.ctg_id and del_flg = 0)  cnt_child
 				from 
 				category m,
@@ -427,9 +427,9 @@ class Category_model extends ACWModel
 				from category m
 				where ctg_level = 1 and news_flg = $news_flg) m1
 				where m.parent_id = m1.ctg_id
-				and m.ctg_level = 2 
+				and m.ctg_level = 2 )
 				union
-				select m3.*, CONCAT(m2.sort2,'_',LPAD(m3.sort,5,'0'),'_',LPAD(m3.ctg_id,5,'0')) sort2,0 as cnt_child
+				(select m3.*, CONCAT(m2.sort2,'_',LPAD(m3.sort,5,'0'),'_',LPAD(m3.ctg_id,5,'0')) sort2,0 as cnt_child
 				from category m3,
 				(select m.* , CONCAT(m1.sort2,'_',LPAD(m.sort,5,'0'),'_',LPAD(m.ctg_id,5,'0')) sort2
 				from 
@@ -440,7 +440,7 @@ class Category_model extends ACWModel
 				where m.parent_id = m1.ctg_id
 				and m.ctg_level = 2 ) m2
 				where m3.parent_id = m2.ctg_id
-				and m3.ctg_level = 3
+				and m3.ctg_level = 3)
 
 				) t where t.del_flg = 0
 				ORDER BY t.sort2";

@@ -1,3 +1,4 @@
+
 <div class="art-sidebar2"><div class="art-Block">
     <div class="art-Block-tl"></div>
     <div class="art-Block-tr"></div>
@@ -13,7 +14,7 @@
 <div class="art-BlockContent">
     <div class="art-BlockContent-body">
 
-<a target="_blank" mce_href="/dat-xe-online.html" href="http://thuexegiare.net/dat-xe-online.html"><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/popup-datxe-online.gif" mce_src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/popup-datxe-online.gif" alt="" height="391" width="237"></a>
+<a target="_blank" mce_href="/dat-xe-online.html" href="<%$smarty.const.ACW_BASE_URL%>datxe"><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/popup-datxe-online.gif" mce_src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/popup-datxe-online.gif" alt="" height="391" width="237"></a>
     </div>
 </div>
 
@@ -41,231 +42,90 @@
 ĐẶT XE TẠI ĐÂY</div>
     </div>
 </div>
+<style>
+table.padding-3 tr td{
+	padding-bottom: 3px;
+}
+.formNoError{
+	display:none;
+}
+</style>
 <div class="art-BlockContent">
     <div class="art-BlockContent-body">
+    <%assign var='datxe_flg' value=ACWSession::get('datxe_update')%>
+    <%if $datxe_flg == 'ok'%>
+    <%ACWSession::set('datxe_update',null)%>
+	<div class="rsform"><table class="mceItemTable" border="0"><tbody><tr style="text-align: justify;" mce_style="text-align: justify;"><td style="width:200px;">- Cảm ơn quý khách đã chọn dịch vụ của luhanhmientay.vn<br>- Nhân viên giao dịch sẽ liên hệ lại với quý khách ngay sau khi chúng tôi nhận thông tin<br>- Nếu sau 12h quý khách chưa nhận được thông tin từ luhanhmientay.vn quý khách vui gọi (08) 2202.2202 chúng tôi sẻ trả lời thông tin ngay cho quý khách.</td></tr><tr><td><p style="text-align: center;"><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/thank.png" mce_src="/images/stories/thank.png" alt="" height="45" width="187"></p></td></tr></tbody></table><br><input type="button" name="continue" value="Tiếp tục" onclick="document.location='/';"></div>
+	<%else%>
 
-<div class="rsform"><form method="post" id="userForm" enctype="multipart/form-data" action="http://thuexegiare.net/"><div class="dattour">
-<table border="0">
-				</table><table border="0">
+<div class="rsform"><form method="post" id="userForm" enctype="multipart/form-data" action="<%$smarty.const.ACW_BASE_URL%>datxe/update"><div class="dattour">
+<table border="0" >
+				</table><table border="0" class="padding-3">
 			        <tbody><tr>
 					<td>E-mail:</td>
-					<td><input type="text" value="" size="24" name="form[Email]" id="Email"><br>
+					<td><input type="text" value="" size="24" name="form[email]" id="Email"><br>
 					<span id="component42" class="formNoError">Vui lòng nhập đúng email</span></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>Phone:</td>
-					<td><input type="text" value="" size="24" name="form[DienThoai]" id="DienThoai"><br>
+					<td><input type="number" value="" size="24" name="form[dien_thoai]" id="DienThoai"><br>
 					<span id="component48" class="formNoError">Vui lòng nhập số điện thoại</span></td>
 					<td></td>
 				</tr>
                                 <tr>
 					<td>Mục đích</td>
-					<td><select size="0" name="form[MucDich][]" id="MucDich"><option value="Chọn xe để thuê">Chọn xe để thuê</option><option value="Thuê xe tháng">Thuê xe tháng</option><option value="Thuê xe du lịch">Thuê xe du lịch</option><option value="Thuê xe cưới">Thuê xe cưới</option></select><br>
+					<td><select size="0" name="form[dichvu_thue]" id="MucDich">
+						<option value="">Chọn xe để thuê</option>
+						<option value="Thuê xe tháng">Thuê xe tháng</option>
+						<option value="Thuê xe du lịch">Thuê xe du lịch</option>
+						<option value="Thuê xe cưới">Thuê xe cưới</option></select><br>
 					<span id="component53" class="formNoError">Chọn xe để thuê</span></td>
 					<td></td>
 				</tr>
 	
 				<tr>
 					<td>Ngày đặt</td>
-					<td><input id="txtcal1" name="form[NgayDatXe]" type="text" readonly="readonly" value="">
-							<input id="btn1" type="button" value="..." onclick="showHideCalendar(&#39;cal1Container&#39;);" class="btnCal">
-
-							<span id="cal1Container" style="margin-top:-70px;clear:both;display:none;position:absolute;z-index:9992" class=" yui-calcontainer single"><table cellspacing="0" class="yui-calendar y2017" id="cal1">
-<thead>
-<tr>
-<th colspan="7" class="calhead">
-<div class="calheader">
-<a class="calnavleft">&nbsp;</a>
-April 2017
-<a class="calnavright">&nbsp;</a>
-</div>
-</th>
-</tr>
-<tr class="calweekdayrow">
-<th class="calweekdaycell">Su</th>
-<th class="calweekdaycell">Mo</th>
-<th class="calweekdaycell">Tu</th>
-<th class="calweekdaycell">We</th>
-<th class="calweekdaycell">Th</th>
-<th class="calweekdaycell">Fr</th>
-<th class="calweekdaycell">Sa</th>
-</tr>
-</thead>
-<tbody class="m4 calbody">
-<tr class="w13">
-<td class="calcell oom calcelltop calcellleft" id="cal1_cell0">26</td>
-<td class="calcell oom calcelltop" id="cal1_cell1">27</td>
-<td class="calcell oom calcelltop" id="cal1_cell2">28</td>
-<td class="calcell oom calcelltop" id="cal1_cell3">29</td>
-<td class="calcell oom calcelltop" id="cal1_cell4">30</td>
-<td class="calcell oom calcelltop" id="cal1_cell5">31</td>
-<td class="calcell wd6 d1 selectable calcelltop calcellright" id="cal1_cell6"><a href="http://thuexegiare.net/#" class="selector">1</a></td>
-</tr>
-<tr class="w14">
-<td class="calcell wd0 d2 selectable calcellleft" id="cal1_cell7"><a href="http://thuexegiare.net/#" class="selector">2</a></td>
-<td class="calcell wd1 d3 selectable" id="cal1_cell8"><a href="http://thuexegiare.net/#" class="selector">3</a></td>
-<td class="calcell wd2 d4 selectable" id="cal1_cell9"><a href="http://thuexegiare.net/#" class="selector">4</a></td>
-<td class="calcell wd3 d5 selectable" id="cal1_cell10"><a href="http://thuexegiare.net/#" class="selector">5</a></td>
-<td class="calcell wd4 d6 selectable" id="cal1_cell11"><a href="http://thuexegiare.net/#" class="selector">6</a></td>
-<td class="calcell wd5 d7 selectable" id="cal1_cell12"><a href="http://thuexegiare.net/#" class="selector">7</a></td>
-<td class="calcell wd6 d8 selectable calcellright" id="cal1_cell13"><a href="http://thuexegiare.net/#" class="selector">8</a></td>
-</tr>
-<tr class="w15">
-<td class="calcell wd0 d9 selectable calcellleft" id="cal1_cell14"><a href="http://thuexegiare.net/#" class="selector">9</a></td>
-<td class="calcell wd1 d10 selectable" id="cal1_cell15"><a href="http://thuexegiare.net/#" class="selector">10</a></td>
-<td class="calcell wd2 d11 selectable" id="cal1_cell16"><a href="http://thuexegiare.net/#" class="selector">11</a></td>
-<td class="calcell wd3 d12 selectable" id="cal1_cell17"><a href="http://thuexegiare.net/#" class="selector">12</a></td>
-<td class="calcell wd4 d13 selectable" id="cal1_cell18"><a href="http://thuexegiare.net/#" class="selector">13</a></td>
-<td class="calcell wd5 d14 selectable" id="cal1_cell19"><a href="http://thuexegiare.net/#" class="selector">14</a></td>
-<td class="calcell wd6 d15 selectable calcellright" id="cal1_cell20"><a href="http://thuexegiare.net/#" class="selector">15</a></td>
-</tr>
-<tr class="w16">
-<td class="calcell wd0 d16 selectable calcellleft" id="cal1_cell21"><a href="http://thuexegiare.net/#" class="selector">16</a></td>
-<td class="calcell wd1 d17 selectable" id="cal1_cell22"><a href="http://thuexegiare.net/#" class="selector">17</a></td>
-<td class="calcell wd2 d18 selectable" id="cal1_cell23"><a href="http://thuexegiare.net/#" class="selector">18</a></td>
-<td class="calcell wd3 d19 selectable" id="cal1_cell24"><a href="http://thuexegiare.net/#" class="selector">19</a></td>
-<td class="calcell wd4 d20 today selectable" id="cal1_cell25"><a href="http://thuexegiare.net/#" class="selector">20</a></td>
-<td class="calcell wd5 d21 selectable" id="cal1_cell26"><a href="http://thuexegiare.net/#" class="selector">21</a></td>
-<td class="calcell wd6 d22 selectable calcellright" id="cal1_cell27"><a href="http://thuexegiare.net/#" class="selector">22</a></td>
-</tr>
-<tr class="w17">
-<td class="calcell wd0 d23 selectable calcellleft" id="cal1_cell28"><a href="http://thuexegiare.net/#" class="selector">23</a></td>
-<td class="calcell wd1 d24 selectable" id="cal1_cell29"><a href="http://thuexegiare.net/#" class="selector">24</a></td>
-<td class="calcell wd2 d25 selectable" id="cal1_cell30"><a href="http://thuexegiare.net/#" class="selector">25</a></td>
-<td class="calcell wd3 d26 selectable" id="cal1_cell31"><a href="http://thuexegiare.net/#" class="selector">26</a></td>
-<td class="calcell wd4 d27 selectable" id="cal1_cell32"><a href="http://thuexegiare.net/#" class="selector">27</a></td>
-<td class="calcell wd5 d28 selectable" id="cal1_cell33"><a href="http://thuexegiare.net/#" class="selector">28</a></td>
-<td class="calcell wd6 d29 selectable calcellright" id="cal1_cell34"><a href="http://thuexegiare.net/#" class="selector">29</a></td>
-</tr>
-<tr class="w18">
-<td class="calcell wd0 d30 selectable calcellleft calcellbottom" id="cal1_cell35"><a href="http://thuexegiare.net/#" class="selector">30</a></td>
-<td class="calcell oom calcellbottom" id="cal1_cell36">1</td>
-<td class="calcell oom calcellbottom" id="cal1_cell37">2</td>
-<td class="calcell oom calcellbottom" id="cal1_cell38">3</td>
-<td class="calcell oom calcellbottom" id="cal1_cell39">4</td>
-<td class="calcell oom calcellbottom" id="cal1_cell40">5</td>
-<td class="calcell oom calcellright calcellbottom" id="cal1_cell41">6</td>
-</tr>
-</tbody>
-</table></span><br>
+					<td><input id="txtcal1" name="form[ngay_di]" type="text" class="datetimepicker" value="" size="24" style="width: 145px">
+							
 					<span id="component46" class="formNoError">Vui lòng chọn ngày đặt xe</span></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>Ngày về:</td>
-					<td><input id="txtcal0" name="form[NgayTraXe]" type="text" value="">
-							<input id="btn0" type="button" value="..." onclick="showHideCalendar(&#39;cal0Container&#39;);" class="btnCal">
-
-							<span id="cal0Container" style="margin-top:-70px;clear:both;display:none;position:absolute;z-index:9991" class=" yui-calcontainer single"><table cellspacing="0" class="yui-calendar y2017" id="cal0">
-<thead>
-<tr>
-<th colspan="7" class="calhead">
-<div class="calheader">
-<a class="calnavleft">&nbsp;</a>
-April 2017
-<a class="calnavright">&nbsp;</a>
-</div>
-</th>
-</tr>
-<tr class="calweekdayrow">
-<th class="calweekdaycell">Su</th>
-<th class="calweekdaycell">Mo</th>
-<th class="calweekdaycell">Tu</th>
-<th class="calweekdaycell">We</th>
-<th class="calweekdaycell">Th</th>
-<th class="calweekdaycell">Fr</th>
-<th class="calweekdaycell">Sa</th>
-</tr>
-</thead>
-<tbody class="m4 calbody">
-<tr class="w13">
-<td class="calcell oom calcelltop calcellleft" id="cal0_cell0">26</td>
-<td class="calcell oom calcelltop" id="cal0_cell1">27</td>
-<td class="calcell oom calcelltop" id="cal0_cell2">28</td>
-<td class="calcell oom calcelltop" id="cal0_cell3">29</td>
-<td class="calcell oom calcelltop" id="cal0_cell4">30</td>
-<td class="calcell oom calcelltop" id="cal0_cell5">31</td>
-<td class="calcell wd6 d1 selectable calcelltop calcellright" id="cal0_cell6"><a href="http://thuexegiare.net/#" class="selector">1</a></td>
-</tr>
-<tr class="w14">
-<td class="calcell wd0 d2 selectable calcellleft" id="cal0_cell7"><a href="http://thuexegiare.net/#" class="selector">2</a></td>
-<td class="calcell wd1 d3 selectable" id="cal0_cell8"><a href="http://thuexegiare.net/#" class="selector">3</a></td>
-<td class="calcell wd2 d4 selectable" id="cal0_cell9"><a href="http://thuexegiare.net/#" class="selector">4</a></td>
-<td class="calcell wd3 d5 selectable" id="cal0_cell10"><a href="http://thuexegiare.net/#" class="selector">5</a></td>
-<td class="calcell wd4 d6 selectable" id="cal0_cell11"><a href="http://thuexegiare.net/#" class="selector">6</a></td>
-<td class="calcell wd5 d7 selectable" id="cal0_cell12"><a href="http://thuexegiare.net/#" class="selector">7</a></td>
-<td class="calcell wd6 d8 selectable calcellright" id="cal0_cell13"><a href="http://thuexegiare.net/#" class="selector">8</a></td>
-</tr>
-<tr class="w15">
-<td class="calcell wd0 d9 selectable calcellleft" id="cal0_cell14"><a href="http://thuexegiare.net/#" class="selector">9</a></td>
-<td class="calcell wd1 d10 selectable" id="cal0_cell15"><a href="http://thuexegiare.net/#" class="selector">10</a></td>
-<td class="calcell wd2 d11 selectable" id="cal0_cell16"><a href="http://thuexegiare.net/#" class="selector">11</a></td>
-<td class="calcell wd3 d12 selectable" id="cal0_cell17"><a href="http://thuexegiare.net/#" class="selector">12</a></td>
-<td class="calcell wd4 d13 selectable" id="cal0_cell18"><a href="http://thuexegiare.net/#" class="selector">13</a></td>
-<td class="calcell wd5 d14 selectable" id="cal0_cell19"><a href="http://thuexegiare.net/#" class="selector">14</a></td>
-<td class="calcell wd6 d15 selectable calcellright" id="cal0_cell20"><a href="http://thuexegiare.net/#" class="selector">15</a></td>
-</tr>
-<tr class="w16">
-<td class="calcell wd0 d16 selectable calcellleft" id="cal0_cell21"><a href="http://thuexegiare.net/#" class="selector">16</a></td>
-<td class="calcell wd1 d17 selectable" id="cal0_cell22"><a href="http://thuexegiare.net/#" class="selector">17</a></td>
-<td class="calcell wd2 d18 selectable" id="cal0_cell23"><a href="http://thuexegiare.net/#" class="selector">18</a></td>
-<td class="calcell wd3 d19 selectable" id="cal0_cell24"><a href="http://thuexegiare.net/#" class="selector">19</a></td>
-<td class="calcell wd4 d20 today selectable" id="cal0_cell25"><a href="http://thuexegiare.net/#" class="selector">20</a></td>
-<td class="calcell wd5 d21 selectable" id="cal0_cell26"><a href="http://thuexegiare.net/#" class="selector">21</a></td>
-<td class="calcell wd6 d22 selectable calcellright" id="cal0_cell27"><a href="http://thuexegiare.net/#" class="selector">22</a></td>
-</tr>
-<tr class="w17">
-<td class="calcell wd0 d23 selectable calcellleft" id="cal0_cell28"><a href="http://thuexegiare.net/#" class="selector">23</a></td>
-<td class="calcell wd1 d24 selectable" id="cal0_cell29"><a href="http://thuexegiare.net/#" class="selector">24</a></td>
-<td class="calcell wd2 d25 selectable" id="cal0_cell30"><a href="http://thuexegiare.net/#" class="selector">25</a></td>
-<td class="calcell wd3 d26 selectable" id="cal0_cell31"><a href="http://thuexegiare.net/#" class="selector">26</a></td>
-<td class="calcell wd4 d27 selectable" id="cal0_cell32"><a href="http://thuexegiare.net/#" class="selector">27</a></td>
-<td class="calcell wd5 d28 selectable" id="cal0_cell33"><a href="http://thuexegiare.net/#" class="selector">28</a></td>
-<td class="calcell wd6 d29 selectable calcellright" id="cal0_cell34"><a href="http://thuexegiare.net/#" class="selector">29</a></td>
-</tr>
-<tr class="w18">
-<td class="calcell wd0 d30 selectable calcellleft calcellbottom" id="cal0_cell35"><a href="http://thuexegiare.net/#" class="selector">30</a></td>
-<td class="calcell oom calcellbottom" id="cal0_cell36">1</td>
-<td class="calcell oom calcellbottom" id="cal0_cell37">2</td>
-<td class="calcell oom calcellbottom" id="cal0_cell38">3</td>
-<td class="calcell oom calcellbottom" id="cal0_cell39">4</td>
-<td class="calcell oom calcellbottom" id="cal0_cell40">5</td>
-<td class="calcell oom calcellright calcellbottom" id="cal0_cell41">6</td>
-</tr>
-</tbody>
-</table></span><br>
+					<td><input id="txtcal0" name="form[ngay_ve]" class="datetimepicker" type="text" value="" size="24" style="width: 145px">
+							
 					<span id="component45" class="formNoError"></span></td>
 					<td></td>
 				</tr>		
 				<tr>
 					<td>Đi từ:</td>
-					<td><select size="0" name="form[DiTu][]" id="DiTu"><option value="Quận Tân Phú">Quận Tân Phú</option><option value="Quận Thủ Đức">Quận Thủ Đức</option><option value="Quận Tân Bình">Quận Tân Bình</option><option value="Quận Phú Nhuận">Quận Phú Nhuận</option><option value="Quận Gò Vấp">Quận Gò Vấp</option><option value="Quận Bình Tân">Quận Bình Tân</option><option value="Quận Bình Thạnh">Quận Bình Thạnh</option><option value="Quận 12">Quận 12</option><option value="Quận 11">Quận 11</option><option value="Quận 10">Quận 10</option><option value="Quận 8">Quận 8</option><option value="Quận 7">Quận 7</option><option value="Quận 9">Quận 9</option><option value="Quận 6">Quận 6</option><option value="Quận 5">Quận 5</option><option value="Quận 4">Quận 4</option><option value="Quận 3">Quận 3</option><option value="Quận 2">Quận 2</option><option value="Quận 1">Quận 1</option><option value="Huyện Nhà Bè">Huyện Nhà Bè</option><option value="Huyện Hóc Môn">Huyện Hóc Môn</option><option value="Huyện Củ Chi">Huyện Củ Chi</option><option value="Huyện Cần Giờ">Huyện Cần Giờ</option><option value="Huyện Bình Chánh">Huyện Bình Chánh</option></select><br>
+					<td><select size="0" name="form[diadiem_don]" id="DiTu"><option value="Quận Tân Phú">Quận Tân Phú</option><option value="Quận Thủ Đức">Quận Thủ Đức</option><option value="Quận Tân Bình">Quận Tân Bình</option><option value="Quận Phú Nhuận">Quận Phú Nhuận</option><option value="Quận Gò Vấp">Quận Gò Vấp</option><option value="Quận Bình Tân">Quận Bình Tân</option><option value="Quận Bình Thạnh">Quận Bình Thạnh</option><option value="Quận 12">Quận 12</option><option value="Quận 11">Quận 11</option><option value="Quận 10">Quận 10</option><option value="Quận 8">Quận 8</option><option value="Quận 7">Quận 7</option><option value="Quận 9">Quận 9</option><option value="Quận 6">Quận 6</option><option value="Quận 5">Quận 5</option><option value="Quận 4">Quận 4</option><option value="Quận 3">Quận 3</option><option value="Quận 2">Quận 2</option><option value="Quận 1">Quận 1</option><option value="Huyện Nhà Bè">Huyện Nhà Bè</option><option value="Huyện Hóc Môn">Huyện Hóc Môn</option><option value="Huyện Củ Chi">Huyện Củ Chi</option><option value="Huyện Cần Giờ">Huyện Cần Giờ</option><option value="Huyện Bình Chánh">Huyện Bình Chánh</option></select><br>
 					<span id="component49" class="formNoError"></span></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>Đến:</td>
-					<td><select size="0" name="form[Den][]" id="Den"><option value="Hà Nội">Hà Nội</option><option value="Hồ Chí Minh">Hồ Chí Minh</option><option value="An Giang">An Giang</option><option value="Bạc Liêu">Bạc Liêu</option><option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option><option value="Bắc Cạn">Bắc Cạn</option><option value="Bắc Giang">Bắc Giang</option><option value="Bắc Ninh">Bắc Ninh</option><option value="Bến Tre">Bến Tre</option><option value="Bình Dương">Bình Dương</option><option value="Bình Định">Bình Định</option><option value="Bình Phước">Bình Phước</option><option value="Bình Thuận">Bình Thuận</option><option value="Buôn Mê Thuột">Buôn Mê Thuột</option><option value="Cao Bằng">Cao Bằng</option><option value="Cà Mau">Cà Mau</option><option value="Cần Thơ">Cần Thơ</option><option value="Đà Nẵng">Đà Nẵng</option><option value="Đắc Lắc">Đắc Lắc</option><option value="Đồng Nai">Đồng Nai</option><option value="Đồng Tháp">Đồng Tháp</option><option value="Gia Lai">Gia Lai</option><option value="Hà Giang">Hà Giang</option><option value="Hà Nam">Hà Nam</option><option value="Hà Tây">Hà Tây</option><option value="Hà Tĩnh">Hà Tĩnh</option><option value="Hải Dương">Hải Dương</option><option value="Hải Phòng">Hải Phòng</option><option value="Hoà Bình">Hoà Bình</option><option value="Huế">Huế</option><option value="Hưng Yên">Hưng Yên</option><option value="Khánh Hoà">Khánh Hoà</option><option value="Kiên Giang">Kiên Giang</option><option value="Kon Tum">Kon Tum</option><option value="Lai Châu">Lai Châu</option><option value="Lạng Sơn">Lạng Sơn</option><option value="Lào Cai">Lào Cai</option><option value="Lâm Đồng">Lâm Đồng</option><option value="Long An">Long An</option><option value="Nam Định">Nam Định</option><option value="Nghệ An">Nghệ An</option><option value="Ninh Bình">Ninh Bình</option><option value="Ninh Thuận">Ninh Thuận</option><option value="Phú Thọ">Phú Thọ</option><option value="Phú Yên">Phú Yên</option><option value="Quảng Bình">Quảng Bình</option><option value="Quảng Nam">Quảng Nam</option><option value="Quảng Ngãi">Quảng Ngãi</option><option value="Quảng Ninh">Quảng Ninh</option><option value="Quảng Trị">Quảng Trị</option><option value="Sóc Trăng">Sóc Trăng</option><option value="Sơn La">Sơn La</option><option value="Sơn Tây">Sơn Tây</option><option value="Tây Ninh">Tây Ninh</option><option value="Thái Bình">Thái Bình</option><option value="Thái Nguyên">Thái Nguyên</option><option value="Thanh Hoá">Thanh Hoá</option><option value="Tiền Giang">Tiền Giang</option><option value="Trà Vinh">Trà Vinh</option><option value="Tuyên Quang">Tuyên Quang</option><option value="Vĩnh Long">Vĩnh Long</option><option value="Vĩnh Phúc">Vĩnh Phúc</option><option value="Yên Bái">Yên Bái</option><option value="Sân bay Nội bài">Sân bay Nội bài</option></select><br>
+					<td><select size="0" name="form[noi_den]" id="Den"><option value="Hà Nội">Hà Nội</option><option value="Hồ Chí Minh">Hồ Chí Minh</option><option value="An Giang">An Giang</option><option value="Bạc Liêu">Bạc Liêu</option><option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option><option value="Bắc Cạn">Bắc Cạn</option><option value="Bắc Giang">Bắc Giang</option><option value="Bắc Ninh">Bắc Ninh</option><option value="Bến Tre">Bến Tre</option><option value="Bình Dương">Bình Dương</option><option value="Bình Định">Bình Định</option><option value="Bình Phước">Bình Phước</option><option value="Bình Thuận">Bình Thuận</option><option value="Buôn Mê Thuột">Buôn Mê Thuột</option><option value="Cao Bằng">Cao Bằng</option><option value="Cà Mau">Cà Mau</option><option value="Cần Thơ">Cần Thơ</option><option value="Đà Nẵng">Đà Nẵng</option><option value="Đắc Lắc">Đắc Lắc</option><option value="Đồng Nai">Đồng Nai</option><option value="Đồng Tháp">Đồng Tháp</option><option value="Gia Lai">Gia Lai</option><option value="Hà Giang">Hà Giang</option><option value="Hà Nam">Hà Nam</option><option value="Hà Tây">Hà Tây</option><option value="Hà Tĩnh">Hà Tĩnh</option><option value="Hải Dương">Hải Dương</option><option value="Hải Phòng">Hải Phòng</option><option value="Hoà Bình">Hoà Bình</option><option value="Huế">Huế</option><option value="Hưng Yên">Hưng Yên</option><option value="Khánh Hoà">Khánh Hoà</option><option value="Kiên Giang">Kiên Giang</option><option value="Kon Tum">Kon Tum</option><option value="Lai Châu">Lai Châu</option><option value="Lạng Sơn">Lạng Sơn</option><option value="Lào Cai">Lào Cai</option><option value="Lâm Đồng">Lâm Đồng</option><option value="Long An">Long An</option><option value="Nam Định">Nam Định</option><option value="Nghệ An">Nghệ An</option><option value="Ninh Bình">Ninh Bình</option><option value="Ninh Thuận">Ninh Thuận</option><option value="Phú Thọ">Phú Thọ</option><option value="Phú Yên">Phú Yên</option><option value="Quảng Bình">Quảng Bình</option><option value="Quảng Nam">Quảng Nam</option><option value="Quảng Ngãi">Quảng Ngãi</option><option value="Quảng Ninh">Quảng Ninh</option><option value="Quảng Trị">Quảng Trị</option><option value="Sóc Trăng">Sóc Trăng</option><option value="Sơn La">Sơn La</option><option value="Sơn Tây">Sơn Tây</option><option value="Tây Ninh">Tây Ninh</option><option value="Thái Bình">Thái Bình</option><option value="Thái Nguyên">Thái Nguyên</option><option value="Thanh Hoá">Thanh Hoá</option><option value="Tiền Giang">Tiền Giang</option><option value="Trà Vinh">Trà Vinh</option><option value="Tuyên Quang">Tuyên Quang</option><option value="Vĩnh Long">Vĩnh Long</option><option value="Vĩnh Phúc">Vĩnh Phúc</option><option value="Yên Bái">Yên Bái</option><option value="Sân bay Nội bài">Sân bay Nội bài</option></select><br>
 					<span id="component50" class="formNoError"></span></td>
 					<td></td>
 				</tr>
 				
 				<tr>
 					<td>Chiều đi</td>
-					<td><input type="radio" value="Khứ hồi" name="form[ChieuDi]" id="ChieuDi0"><label for="ChieuDi0">Khứ hồi</label><input type="radio" value="Một chiều" name="form[ChieuDi]" id="ChieuDi1"><label for="ChieuDi1">Một chiều</label><br>
+					<td><input type="radio" value="Khứ hồi" name="form[chieu_di]" id="ChieuDi0"><label for="ChieuDi0">Khứ hồi</label><input type="radio" value="Một chiều" name="form[chieu_di]" id="ChieuDi1"><label for="ChieuDi1">Một chiều</label><br>
 					<span id="component44" class="formNoError">Vui lòng chọn chiều đi</span></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>Hãng:</td>
-					<td><select size="0" name="form[NhanHieu][]" id="NhanHieu"><option value="Bất kỳ">Bất kỳ</option><option value="Kia">Kia</option><option value="Madza">Madza</option><option value="Huyndai">Huyndai</option><option value="Honda">Honda</option><option value="Toyota">Toyota</option><option value="Mercedes Benz">Mercedes Benz</option><option value="Mitsubishi">Mitsubishi</option><option value="Ford">Ford</option><option value="Daewoo">Daewoo</option><option value="BMW">BMW</option><option value=""></option></select><br>
+					<td><select size="0" name="form[hieu_xe]" id="NhanHieu"><option value="Bất kỳ">Bất kỳ</option><option value="Kia">Kia</option><option value="Madza">Madza</option><option value="Huyndai">Huyndai</option><option value="Honda">Honda</option><option value="Toyota">Toyota</option><option value="Mercedes Benz">Mercedes Benz</option><option value="Mitsubishi">Mitsubishi</option><option value="Ford">Ford</option><option value="Daewoo">Daewoo</option><option value="BMW">BMW</option><option value=""></option></select><br>
 					<span id="component41" class="formNoError"></span></td>
 					<td></td>
 				</tr>
 				<tr>
 					<td>Loại xe:</td>
-					<td><select size="0" name="form[LoaiXe][]" id="LoaiXe"><option value="4-5 chỗ">4-5 chỗ</option><option value="7 chỗ">7 chỗ</option><option value="12 chỗ">12 chỗ</option><option value="16 chỗ">16 chỗ</option><option value="24 chỗ">24 chỗ</option><option value="29 chỗ">29 chỗ</option><option value="35 chỗ">35 chỗ</option><option value="45 chỗ">45 chỗ</option></select><br>
+					<td><select size="0" name="form[kieu_xe]" id="LoaiXe"><option value="4-5 chỗ">4-5 chỗ</option><option value="7 chỗ">7 chỗ</option><option value="12 chỗ">12 chỗ</option><option value="16 chỗ">16 chỗ</option><option value="24 chỗ">24 chỗ</option><option value="29 chỗ">29 chỗ</option><option value="35 chỗ">35 chỗ</option><option value="45 chỗ">45 chỗ</option></select><br>
 					<span id="component43" class="formNoError"></span></td>
 					<td></td>
 				</tr>
@@ -274,15 +134,18 @@ April 2017
 <tr>
 <td colspan="3" valign="top">
 					Yêu cầu khác:<br>
-					<textarea cols="30" rows="2" name="form[Yeucaukhac]" id="Yeucaukhac"></textarea><br>
+					<textarea cols="30" rows="2" name="form[ghi_chu]" id="Yeucaukhac"></textarea><br>
 					<span id="component51" class="formNoError">Invalid Input</span>
 					
 </td>
-</tr><tr>
+</tr><!--<tr>
 		<td>Capcha:</td>
-		<td><img src="./thuexe_files/index(1).php" id="captcha54" alt="Capcha:"><input type="text" name="form[capcha]" value="" id="captchaTxt54" style="text-align:center;width:54px;"><a href="http://thuexegiare.net/" onclick="refreshCaptcha(54,&#39;http://thuexegiare.net/index.php?option=com_rsform&amp;task=captcha&amp;componentId=54&#39;);return false;">Mã khác</a><div class="clr"><span id="component54" class="formNoError">Invalid Input</span></div></td>
+		<td><img src="#" id="captcha54" alt="Capcha:">
+			<input type="text" name="form[capcha]" value="" id="captchaTxt54" style="text-align:center;width:54px;">
+			<a href="#" onclick="refreshCaptcha(54,&#39;http://thuexegiare.net/index.php?option=com_rsform&amp;task=captcha&amp;componentId=54&#39;);return false;">Mã khác</a>
+			<div class="clr"><span id="component54" class="formNoError">Invalid Input</span></div></td>
 		<td></td>
-</tr>
+</tr>-->
 
 				<tr>
 					<td></td>
@@ -295,33 +158,64 @@ April 2017
 <script type="text/javascript">
 function checkDate()
 {
+	var date_val1 = document.getElementById('txtcal1').value.trim();
+	if (date_val1.length < 1)
+	{
+		alert('Bạn chưa chọn ngày đặt xe');
+		return false;
+	}
+	var date_val2 = document.getElementById('txtcal0').value.trim();
+	if (date_val2.length < 1)
+	{
+		alert('Bạn chưa chọn ngày trả xe');
+		return false;
+	}
+	var datestr1=date_val1.substring(6)+','+date_val1.substring(3,5)+','+date_val1.substring(0,2);
+	var datestr2=date_val2.substring(6)+','+date_val2.substring(3,5)+','+date_val2.substring(0,2);
 
-var datestr1=document.getElementById('txtcal1').value.substring(6)+','+document.getElementById('txtcal1').value.substring(3,5)+','+document.getElementById('txtcal1').value.substring(0,2);
-var datestr2=document.getElementById('txtcal0').value.substring(6)+','+document.getElementById('txtcal0').value.substring(3,5)+','+document.getElementById('txtcal0').value.substring(0,2);
+	var date1 = new Date (datestr1);
+	var date2 = new Date (datestr2);
+	var today = new Date ();
 
-var date1 = new Date (datestr1);
-var date2 = new Date (datestr2);
-var today = new Date ();
-
-if (date1 > date2)
-{
-alert('Ngày trả xe phải sau ngày đặt xe');
-return false;
+	if (date1 > date2)
+	{
+		alert('Ngày trả xe phải sau ngày đặt xe');
+		return false;
+	}
+	else if (date1 < today)
+	{
+		alert('Ngày đặt xe phải lớn hơn hoặc bằng ngày hiện tại');
+		return false;
+	}
+	var email_val = document.getElementById('Email').value.trim();
+	if (email_val.length < 1)
+	{
+		alert('Vui lòng nhập email');
+		return false;
+	}
+	var el_val = document.getElementById('DienThoai').value.trim();
+	if (el_val.length < 1)
+	{
+		alert('Vui lòng nhập số điện thoại');
+		return false;
+	}
+	var el_val = document.getElementById('DienThoai').value.trim();
+	if (el_val.length < 1)
+	{
+		alert('Vui lòng nhập số điện thoại');
+		return false;
+	}
+	
+	return true;
 }
-else if (date1 < today)
-{
-alert('Ngày đặt xe phải lớn hơn hoặc bằng ngày hiện tại');
-return false;
-}
-else
-{
-return true;
-}
-}
-</script><input type="hidden" name="form[formId]" value="4"></form>
-			<script type="text/javascript" src="./thuexe_files/cal.js"></script>
-			<script type="text/javascript" src="./thuexe_files/index(2).php"></script>
-			<script type="text/javascript" defer="defer">rsf_CALENDAR.util.Event.addListener(window, "load", init(Array('POPUP','POPUP'),Array('dd/mm/yyyy','dd/mm/yyyy'),Array('','')));</script></div>
+</script><!--<input type="hidden" name="form[formId]" value="4">-->
+	
+</form>
+			<!--<script type="text/javascript" src="./thuexe_files/cal.js"></script>
+			<script type="text/javascript" src="./thuexe_files/index(2).php"></script>-->
+			<!--<script type="text/javascript" defer="defer">rsf_CALENDAR.util.Event.addListener(window, "load", init(Array('POPUP','POPUP'),Array('dd/mm/yyyy','dd/mm/yyyy'),Array('','')));</script>-->
+			</div>
+	<%/if%>
     </div>
 </div>
 
@@ -361,3 +255,14 @@ THỐNG KÊ TRUY CẬP</div>
 </div>
 
 </div>
+<script type='text/javascript'>
+jQuery(function() {
+//$(document).ready(function(){
+    jQuery('.datetimepicker').datetimepicker({          
+          format:'d/m/Y',
+          inline:false,
+          timepicker:false,
+          lang:'ru'
+    });
+});
+</script>
