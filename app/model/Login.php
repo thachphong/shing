@@ -63,7 +63,7 @@ class Login_model extends ACWModel
 	public static function action_authadmin()
 	{
 		$param = self::get_param(array('user_id', 'passwd','lang'));
-		ACWLog::debug_var('test',$param);
+		//ACWLog::debug_var('test',$param);
 		if (self::get_validate_result()) {
 			$login = new Login_model();
 			$user_info = $login->check_login($param);
@@ -200,7 +200,7 @@ class Login_model extends ACWModel
 			user
 		
 			WHERE del_flg = 0
-			AND	upper(user_name) = upper(:user_id)
+			AND	upper(user_no) = upper(:user_id)
 			AND
 				PASS = :passwd			
 			', $sql_param);

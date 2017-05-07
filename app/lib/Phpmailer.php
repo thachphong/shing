@@ -25,7 +25,7 @@
  * @author Andy Prevost (codeworxtech) <codeworxtech@users.sourceforge.net>
  * @author Brent R. Matzelle (original founder)
  */
-class PHPMailer_lib
+class Phpmailer_lib
 {
     /**
      * The PHPMailer Version number.
@@ -1233,7 +1233,7 @@ class PHPMailer_lib
     public function getSMTPInstance()
     {
         if (!is_object($this->smtp)) {
-            $this->smtp = new SMTP_lib();
+            $this->smtp = new smtp_lib();
         }
         return $this->smtp;
     }

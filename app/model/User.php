@@ -37,17 +37,21 @@ class User_model extends ACWModel
 			'search_user_name'=>$param['search_user_name']
 		));
 	}
-	public static function action_password()
+	public static function action_editpass()
 	{
-		return ACWView::template('user/password.html', array(
-		));
+		$param = self::get_param(array('acw_url'));	
+				
+		$model = new User_model();
+		$user_row = $model->get_user_row($param['acw_url'][0]);
+		return ACWView::template_admin('user/editpass.html', $user_row);
 	}
 	public static function action_updatepass()
 	{
 		$params = self::get_param(array(			
 			'old_pass',
 			'new_pass',
-            'renew_pass'
+            'new_pass_re',
+            'user_no'
 		));
 	    
 		if (self::get_validate_result() === true) {
@@ -59,65 +63,25 @@ class User_model extends ACWModel
 		    $result['status'] = 'OK';
 		} else {
 			$result['status'] = 'NG';
-			$result['error'] = ACWError::get_list();
+			$result['msg'] = ACWError::get_list();
 		}
 
 		return ACWView::json($result);
 	}
 	public static function action_edit()
 	{
-		$params = self::get_param(array(
-			'm_user_id'
-		));
-		
-		$m_user_id = null;
-		if (isset($params['m_user_id'])) {
-			$m_user_id = $params['m_user_id'];
-		}
+		$param = self::get_param(array('acw_url'));	
+				
 		$model = new User_model();
-		$user_row = array();
-		if ($m_user_id == null) {			
-			$user_row['user_id'] = null;
-			$user_row['user_name'] = null;
-            $user_row['user_name_disp'] = null;
-            $user_row['email'] = null;
-			$user_row['donvi'] = null;
-            $user_row['phong_ban'] = null;
-            $user_row['to_nhom'] = null;
-            $user_row['ip'] = null;
-            $user_row['admin'] = null;
-			$user_row['del_flg'] = null;
-			$user_row['upload'] = null;
-			$user_row['phanbo'] = null;
-			$user_row['print'] = null;
-			$user_row['kiemtra'] = null;
-            $user_row['duyet'] = null;
-            $user_row['trungtam_quanly'] = null;
-            $user_row['admin'] = null;
-            $user_row['list_mail'] = '';
-			
-		} else {
-			$user_row = $model->get_user_row($m_user_id);			
-		}		
-		$donvi = $model->get_donvi();
-        $phongban=addslashes(json_encode( $model->get_phongban()));
-        $tonhom =addslashes(json_encode( $model->get_tonhom()));
-        //var_dump($user_row);die;
-		return ACWView::template('user/edit.html', array(
-			'user_row' => $user_row	
-            ,'don_vi'=>$donvi
-            ,'phong_ban'=> $phongban	
-            ,'to_nhom'=>$tonhom
-		));
+		$user_row = $model->get_user_row($param['acw_url'][0]);
+		
+		return ACWView::template_admin('user/edit.html', $user_row);
 	}
 	
 	private static function _validate_update(&$param)
 	{
-	    /**
-	     * 
-	     * */
 	    
-		$validate = new Validate_lib();
+		/*$validate = new Validate_lib();
 		
 		$param['user_id'] = $validate->trim_ext($param['user_id']);
 		$param['user_name'] = $validate->trim_ext($param['user_name']);
@@ -131,18 +95,16 @@ class User_model extends ACWModel
                 ACWError::add('lelng', 'Tên đăng nhập không được quá 50 ký tự');
                 return false;
             }
-        }
+        }*/
 		return true;
 	}
 	private static function _validate_updatepass(&$param)
-	{	    
-		$validate = new Validate_lib();
-		
+	{		
 		$login = new Login_model();
-		$login_info = ACWSession::get('user_info');
-		$user = $login->check_login(array('passwd'=>$param['old_pass'],'user_id'=>$login_info['user_name']));
+		//$login_info = ACWSession::get('user_info');
+		$user = $login->check_login(array('passwd'=>$param['old_pass'],'user_id'=>$param['user_no']));
 		if($user == null){
-			ACWError::add('saipass',Message_model::get_msg('USER041')); //'Mật khẩu cũ không đúng !'
+			ACWError::add('saipass',"Mật khẩu cũ không đúng !"); //'Mật khẩu cũ không đúng !'
             return false;
 		}
 		return true;
@@ -161,32 +123,9 @@ class User_model extends ACWModel
 	{
 		$params = self::get_param(array(			
 			'user_id',
-			'user_name',
-            'user_name_disp',
+			'user_name',          
             'email',
-			'pass',			
-				'don_vi'
-				, 'phong_ban'
-				, 'to_nhom'
-				, 'ip'
-				,'level'
-                ,'del_flg'
-                ,'lev_in'
-                ,'lev_upload'
-                ,'lev_phanbo'
-                ,'lev_kiemtra'
-                ,'lev_duyet'
-                ,'lev_ttql'
-                ,'lev_admin'
-                ,'list_mail'
-		));
-	    $params['lev_in']=($params['lev_in']=='on') ?1:0;
-        $params['lev_upload']=($params['lev_upload']=='on') ?1:0;
-        $params['lev_phanbo']=($params['lev_phanbo']=='on' )?1:0;
-        $params['lev_kiemtra']=($params['lev_kiemtra']=='on') ?1:0;
-        $params['lev_duyet']=($params['lev_duyet']=='on') ?1:0;
-        $params['lev_ttql']=($params['lev_ttql']=='on') ?1:0;
-        $params['lev_admin']=($params['lev_admin']=='on') ?1:0;
+		));	   
 		if (self::get_validate_result() === true) {
 			$model = new User_model();
 			$obj = $model->update($params);
@@ -198,7 +137,6 @@ class User_model extends ACWModel
 			$result['status'] = 'NG';
 			$result['error'] = ACWError::get_list();
 		}
-
 		return ACWView::json($result);
 	}
 	
@@ -233,119 +171,23 @@ class User_model extends ACWModel
 	public function update($params)
 	{
 		$this->begin_transaction();
-		$sql_lev= "select l.level_id from level l where l.print = :lev_in
-                    and l.upload = :lev_upload
-                    and l.phanbo = :lev_phanbo
-                    and l.kiemtra= :lev_kiemtra
-                    and l.duyet =:lev_duyet
-                    and l.trungtam_quanly = :lev_ttql
-                    and l.admin =:lev_admin ";
-        $pam_lev = ACWArray::filter($params, array('lev_in',
-        'lev_upload','lev_phanbo','lev_kiemtra','lev_duyet','lev_ttql','lev_admin'   ));
-        $result = $this->query($sql_lev,$pam_lev);
-        if(count($result) == 0){
-            $sql_lev = "INSERT INTO level(print,upload,phanbo,kiemtra,duyet,trungtam_quanly,admin)
-            values(:lev_in,:lev_upload,:lev_phanbo,:lev_kiemtra,:lev_duyet, :lev_ttql,:lev_admin )";
-            $this->execute($sql_lev,$pam_lev);
-            $result = $this->query("SELECT LAST_INSERT_ID() AS level_id");	
-        }   	
-        $level_id = $result[0]['level_id'];
-        
-		$login_info = ACWSession::get('user_info');
-		
-		$pass_md5 = null;
-		if ($params['pass'] != null) {
-			$pass_md5 = md5(AKAGANE_SALT . $params['pass']);
-		}
-		$sql_params = array(
-			'user_id' => $params['user_id'],
-			'user_name' => $params['user_name'],
-            'user_name_disp' => $params['user_name_disp'],
-            'email'=>$params['email'],
-			'pass' => $pass_md5,
-			'donvi' => $params['don_vi'],
-			'phong_ban' => $params['phong_ban'],
-			'to_nhom' => $params['to_nhom'],
-			'level' => $level_id,
-			'ip' => $params['ip'],
-            'del_flg' => $params['del_flg'],
-            'list_mail' => $params['list_mail'],
-            'upd_user_id'=>$login_info['user_id']
-		);		
-		if ($params['user_id'] == null) {		
-			
-			$res = $this->get_user_id_count($params);
-			if ($res['cnt'] > 0) {
-				ACWError::add('user_name', 'Tên đăng nhập đã có, vui lòng sử dụng tên khác');
-				return;
-			}
-		
-			$sql = "
-				INSERT INTO
-					m_user
-				(
-					  user_id
-					, user_name
-					, pass
-					, user_name_disp
-					, donvi
-					, phong_ban
-					, to_nhom
-					, level
-                    , ip
-                    ,email
-                    , del_flg
-					, add_user_id
-					, add_datetime
-					, upd_user_id
-					, upd_datetime
-					,list_mail
-				) VALUES (
-					  :user_id 
-					, :user_name 
-					, :pass 
-					, :user_name_disp 
-					, :donvi 
-					, :phong_ban 
-					, :to_nhom 
-					, :level
-                    , :ip
-                    , :email
-                    , :del_flg
-					, :add_user_id 
-					, NOW() 
-					, :upd_user_id 
-					, NOW() 
-					, :list_mail
-				);
-			";
-			$sql_params['add_user_id'] = $login_info['user_id'];
-		} else {							
+							
 			
 			$sql = "
 				UPDATE
-					m_user
-				SET
-					  user_id = :user_id
-					, user_name = :user_name
-					, pass = COALESCE(:pass, pass)
-					, user_name_disp = :user_name_disp
-					, donvi = :donvi 
-					, phong_ban = :phong_ban 
-					, to_nhom = :to_nhom 
-                    ,level =:level
-                    , ip =:ip
-                    ,email=:email
-					, del_flg = COALESCE(:del_flg, 0)
-					, upd_user_id = :upd_user_id
-					, upd_datetime = NOW()
-					, list_mail = :list_mail
+					user
+				SET					 
+					 user_name = :user_name					
+                    ,email=:email	
+					, upd_date = NOW()					
 				WHERE
 					user_id = :user_id
-			";
-			$sql_params['user_id'] = $params['user_id'];
-			$sql_params['del_flg'] = $params['del_flg'];
-		}
+			";			
+		$sql_params = ACWArray::filter($params, array(
+					'user_name'
+					,'email'					
+					,'user_id'								
+					));
 		$this->execute($sql, $sql_params);		
 		
 		$this->commit();
@@ -357,17 +199,16 @@ class User_model extends ACWModel
 		$this->begin_transaction();
 		$sql = "
 				UPDATE
-					m_user
+					user
 				SET					
-					 pass = :pass
-					, upd_user_id = :user_id
-					, upd_datetime = NOW()					
+					 pass = :pass					
+					, upd_date= NOW()					
 				WHERE
-					user_id = :user_id
+					user_no = :user_no
 			";
 		$login_info = ACWSession::get('user_info');
 			$pass_md5 = md5(AKAGANE_SALT . $params['new_pass']);
-			$sql_params['user_id'] = $login_info['user_id'];
+			$sql_params['user_no'] = $login_info['user_no'];
 			$sql_params['pass'] = $pass_md5;
 		
 		$this->execute($sql, $sql_params);		
@@ -377,26 +218,14 @@ class User_model extends ACWModel
 		return true;
 	}
 	
-	/**
-	 * ユーザ取得
-	 * @param integer $m_user_id ユーザID
-	 * @return array
-	 */
+	
 	public function get_user_row($m_user_id)
 	{
 		$rows = $this->query("
 				SELECT
-					usr.*,
-                    l.print,
-                    l.upload,
-                    l.phanbo,
-                    l.kiemtra,
-                    l.duyet,
-                    l.trungtam_quanly,
-                    l.admin
+					usr.*
 				FROM
-					m_user usr				
-                    left join level l on l.level_id = usr.level
+					user usr			
                 WHERE
 					usr.user_id = :m_user_id
 			", array("m_user_id" => $m_user_id)

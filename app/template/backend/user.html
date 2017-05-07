@@ -9,27 +9,11 @@
 
     <title>Admin! | </title>
 
-    <!-- Bootstrap -->
-    <link href="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-	
-    <!-- bootstrap-progressbar -->
-    <link href="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
-    <!-- bootstrap-daterangepicker -->
-    <link href="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
-    <!-- Custom Theme Style -->
-    <link href="<%$smarty.const.ACW_BASE_URL_BACKEND%>/build/css/custom.min.css" rel="stylesheet">
+    <%include 'include/header.html'%>
   </head>
   <%assign var='login_info' value=ACWSession::get('user_info')%>
   <body class="nav-md">
+  	<%include 'include/pho_ajax.html'%>
     <div class="container body">
       <div class="main_container">
         <%include 'include/left.html'%>
@@ -41,11 +25,11 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-        <div class="right_col" role="main">
+        <div class="right_col" role="main" style="min-height: 600px">
           <div class="">
-            <div class="page-title">
+            <!--<div class="page-title">
               <div class="title_left">
-                <h3>Danh sách User <!--<small>Some examples to get you started</small>--></h3>
+                <h3>Quản lý danh mục </h3>
               </div>
 
               <div class="title_right">
@@ -58,7 +42,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div>-->
 
             <div class="clearfix"></div>
 
@@ -66,41 +50,38 @@
 			  <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Danh sách User<!--<small>Users</small>--></h2>
-                    <ul class="nav navbar-right panel_toolbox">
+                    <h2>Danh sách tài khoản<!--<small>Users</small>--></h2>
+                    <ul class="nav navbar-rigth panel_toolbox" style="min-width: auto;">
+                      <!--<li><button class="btn btn-primary" id="btn_new">Thêm mới</button></li>-->
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
-                      <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li><a href="#">Settings 1</a>
-                          </li>
-                          <li><a href="#">Settings 2</a>
-                          </li>
-                        </ul>
-                      </li>
+                     
                       <li><a class="close-link"><i class="fa fa-close"></i></a>
                       </li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <!--<p class="text-muted font-13 m-b-30">
-                      Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.
-                    </p>-->
+                    <div class="row">
+                    	<div class="col-sm-6">
+                    	</div>
+                    	<div class="col-sm-6">
+                    		
+                    		<div class="dataTables_filter" style="margin-bottom: 10px">
+                    		<label style="margin: 5px 5px 0px 0;">Tìm</label>
+                        	<input type="search" id="table_search" class="form-control input-sm" style="float: right;width: 88%">
+                        	</div>                      	
+                        </div>
+                    </div>
 					
                     <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
-                      <thead>
+					<thead>
                         <tr>
-                          <th>User NO</th>
-                          <th>User name</th>
-                          <th>Phone</th>
-                          <th>Address</th>
-                          <th>District</th>
-                          <th>City</th>
-                          <th>Add date</th>
-                          <th>Level</th>
-                          <th>E-mail</th>
+                          <th>Tên đăng nhập</th>
+                          <th>Tên hiển thị</th>
+                          <th>Email</th>
+                          <th>Thay đổi mật khẩu</th>
+                          <th>Sửa</th>                          
                         </tr>
                       </thead>
                       <tbody>
@@ -108,18 +89,18 @@
                       	<tr>
                           <td><%$item.user_no%></td>
                           <td><%$item.user_name%></td>
-                          <td><%$item.phone%></td>
-                          <td><%$item.address%></td>
-                          <td><%$item.district%></td>
-                          <td><%$item.city%></td>
-                          <td><%$item.add_date%></td>
-                          <td><%$item.level%></td>
                           <td><%$item.email%></td>
+                          <td><button class="btn btn-info btn-xs btn_editpass" id="pass_<%$item.user_id%>">Đổi mật khẩu</button></td>
+                          <td><button class="btn btn-warning btn-xs btn_edit" id="edit_<%$item.user_id%>">Sửa</button></td>
+                          
+                          
                         </tr>
                       <%/foreach%>                        
                       </tbody>
                     </table>
-					
+                    
+                    </div>
+					</div>
 					
                   </div>
                 </div>
@@ -130,47 +111,155 @@
         
         </div>
         <!-- /page content -->
-
+		
         <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
+        <%include 'include/footer.html'%>
         <!-- /footer content -->
+        
       </div>
     </div>
-
-     <!-- jQuery -->
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/nprogress/nprogress.js"></script>
-    <!-- iCheck -->
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/iCheck/icheck.min.js"></script>
-    <!-- Datatables -->
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/jszip/dist/jszip.min.js"></script>
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/pdfmake/build/pdfmake.min.js"></script>
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/vendors/pdfmake/build/vfs_fonts.js"></script>
-
-    <!-- Custom Theme Scripts -->
-    <script src="<%$smarty.const.ACW_BASE_URL_BACKEND%>/build/js/custom.min.js"></script>
 	
-  </body>
+<script>
+	$(document).ready(function() {
+		$(document).off('click','#btn_new'); 
+        $(document).on('click','#btn_new',function(event){
+        	Pho_html_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>slides/new" ,{'silde_id':''},function(html){
+            	Pho_modal(html,"Thêm Silse",700);
+            });
+        	
+        });
+        $(document).off('click','.dialog_close'); 
+        $(document).on('click','.dialog_close',function(event){        	
+			Pho_modal_close("modal1");
+        });
+        $(document).off('click','#btn_save'); 
+        $(document).on('click','#btn_save',function(event){
+        	var msg = check_validate_update();
+        	if(msg !=""){
+        		Pho_message_box_error("Lỗi",msg);
+        		return;
+        	}
+        	var arr = $('#form_user').serializeArray();	
+			Pho_json_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>user/update" ,arr,function(datas){
+				if(datas.status =="OK"){
+					Pho_modal_close("modal1");
+					//Pho_message_box("Thông báo",datas.msg);
+					Pho_direct("<%$smarty.const.ACW_BASE_URL%>user");
+				}else{
+					Pho_message_box_error("Lỗi",datas.msg);
+				}
+                
+            });
+        });
+        var check_validate_update = function(){        	
+        	/*if($('#img_path').val()==''){
+        		return "Bạn chưa upload ảnh !";
+        	}      	*/
+        	return "";
+        };
+        $(document).off('click','.btn_delete'); 
+        $(document).on('click','.btn_delete',function(event){
+        	var id = $(this).attr('id');
+	        	id = id.replace("del_","");
+	        var menu_name = $('#name_'+id).text();
+        	Pho_message_confirm("Thông báo","Bạn có chắc chắn muốn ảnh này ?",function(){
+        		
+				Pho_json_ajax('GET',"<%$smarty.const.ACW_BASE_URL%>slides/delete/" + id,null ,function(datas){
+					if(datas.status == "OK"){
+						//Pho_modal_close("modal1");
+						//Pho_message_box("Thông báo",datas.msg);
+						//location.href="<%$smarty.const.ACW_BASE_URL%>menu";
+						Pho_direct("<%$smarty.const.ACW_BASE_URL%>slides");
+					}else{
+						Pho_message_box_error("Lỗi",datas.msg);
+					}
+	                
+	            });
+        	});
+        	
+        });
+        $(document).off('click','.btn_edit'); 
+        $(document).on('click','.btn_edit',function(event){
+        	var id = $(this).attr('id');
+	        	id = id.replace("edit_","");			
+            	Pho_html_ajax('GET',"<%$smarty.const.ACW_BASE_URL%>user/edit/"+ id ,null,function(html){
+            	Pho_modal(html,"Sửa thông tin tài khoản",600);
+            });
+        });
+        $(document).off('click','.btn_editpass'); 
+        $(document).on('click','.btn_editpass',function(event){
+        	var id = $(this).attr('id');
+	        	id = id.replace("pass_","");			
+            	Pho_html_ajax('GET',"<%$smarty.const.ACW_BASE_URL%>user/editpass/"+ id ,null,function(html){
+            	Pho_modal(html,"Sửa thông tin tài khoản",600);
+            });
+        });
+        $(document).off('click','#btn_savepass'); 
+        $(document).on('click','#btn_savepass',function(event){
+        	var msg = check_validate_pass();
+        	if(msg !=""){
+        		Pho_message_box_error("Lỗi",msg);
+        		return;
+        	}
+        	var arr = $('#form_user').serializeArray();	
+			Pho_json_ajax('POST',"<%$smarty.const.ACW_BASE_URL%>user/updatepass" ,arr,function(datas){
+				if(datas.status =="OK"){
+					Pho_modal_close("modal1");
+					Pho_message_box("Thông báo","Thay đổi mật khẩu thành công !",function(){
+						Pho_direct("<%$smarty.const.ACW_BASE_URL%>user");
+					});					
+				}else{
+					Pho_message_box_error("Lỗi",datas.msg[0]['info']);
+				}
+                
+            });
+        });
+        var check_validate_pass = function(){        	
+        	if($('#old_pass').val()==''){
+        		return "Vui long nhập mật khẩu cũ !";
+        	} 
+        	if($('#new_pass').val()==''){
+        		return "Vui long nhập mật khẩu mới !";
+        	}
+        	if($('#new_pass_re').val()==''){
+        		return "Vui long nhập lại mật khẩu mới !";
+        	}
+        	if($('#new_pass').val() !=$('#new_pass_re').val()){
+        		return "Mật khẩu mới không khớp !";
+        	}
+        	return "";
+        };
+        $("#table_search").keyup(function(){
+		//hide all the rows
+			//alert('sss');
+	          $("#fbody").find("tr").hide();
+
+		//split the current value of searchInput
+	          var data = this.value.split(" ");
+		//create a jquery object of the rows
+	          var jo = $("#fbody").find("tr");
+	          
+		//Recusively filter the jquery object to get results.
+	          $.each(data, function(i, v){
+	              jo = jo.filter("*:contains('"+v+"')");
+	          });
+	        //show the rows that match.
+	          jo.show();
+	     //Removes the placeholder text  
+	   
+	      })/*.focus(function(){
+	          this.value="";
+	          $(this).css({"color":"black"});
+	          $(this).unbind('focus');
+	      }).css({"color":"#C0C0C0"});*/
+
+	 
+
+        
+    });
+</script>
+     
+    
+	
+</body>
 </html>

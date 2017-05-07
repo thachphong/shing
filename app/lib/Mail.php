@@ -1,13 +1,7 @@
 <?php
-/**
- * Mail Class
- * @author VNIT
- * @since 20150411
- * @version 0.1
- * @todo : send mail smtp using phpmailer
- */
 
-class Mail_lib extends PHPMailer_lib
+
+class Mail_lib extends Phpmailer_lib
 {	
 	// Construct function
 	public function __construct($info = null) {
