@@ -304,4 +304,5 @@ class Slides_model extends ACWModel
 		$sql = "select img_path from slides where del_flg = 0";
 		return $this->query($sql);
 	}
+	
 }

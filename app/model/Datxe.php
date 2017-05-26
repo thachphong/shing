@@ -295,7 +295,7 @@ class Datxe_model extends ACWModel
 	public function get_body($param){
 		$html="<table>";
 		if(strlen($param['ho_ten']) > 0){
-			$html .= "<tr><td><strong>Họ tên: </strong></td><td>Nguyễn Văn A</td></tr>"."\r\n";
+			$html .= "<tr><td><strong>Họ tên: </strong></td><td>".$param['ho_ten']."</td></tr>"."\r\n";
 		} 
 		if(strlen($param['gioi_tinh']) > 0){
 			$html .= "<tr><td><strong>Giới tính: </strong></td><td>".$param['gioi_tinh']."</td></tr>"."\r\n";

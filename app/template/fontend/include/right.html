@@ -246,7 +246,65 @@ THỐNG KÊ TRUY CẬP</div>
 <div class="art-BlockContent">
     <div class="art-BlockContent-body">
 
-<div><div style="text-align: center;"><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/0.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter"><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/1.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter"><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/7.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter"><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/2.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter"><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/4.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter"><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/0.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter"><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/3.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter"><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/5.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter"></div><div><table cellpadding="0" cellspacing="0" style="margin: 3px; text-align: center; align: center; width: 90%;" class="vinaora_counter"><tbody align="center"><tr align="left"><td><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/vtoday.png" alt="mod_vvisit_counter" title="2017-04-20"></td><td>Hôm nay</td><td align="right">2738</td></tr><tr align="left"><td><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/vyesterday.png" alt="mod_vvisit_counter" title="2017-04-19"></td><td>Hôm qua</td><td align="right">2829</td></tr><tr align="left"><td><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/vweek.png" alt="mod_vvisit_counter" title="2017-04-16 -&gt; 2017-04-20"></td><td>Tuần này</td><td align="right">20783</td></tr><tr align="left"><td><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/vlweek.png" alt="mod_vvisit_counter" title="2017-04-09 -&gt; 2017-04-16"></td><td>Tuần trước</td><td align="right">19386</td></tr><tr align="left"><td><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/vmonth.png" alt="mod_vvisit_counter" title="2017-04-01 -&gt; 2017-04-20"></td><td>Tháng này</td><td align="right">80406</td></tr><tr align="left"><td><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/vlmonth.png" alt="mod_vvisit_counter" title="2017-03-01 -&gt; 2017-04-01"></td><td>Tháng trước</td><td align="right">81317</td></tr><tr align="left"><td><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/vall.png" alt="mod_vvisit_counter" title="Visitors Counter"></td><td>Tất cả</td><td align="right">1724035</td></tr></tbody></table></div><hr style="width: 90%"><div style="text-align: center;">Online (20 minutes ago): 13<br>Your IP: 42.113.164.200<br>SAFARI 537.36, WINDOWS<br> Now is: 2017-04-20 20:34</div><div style="text-align: center; display:none"><a href="http://vinaora.com/" target="_self" title="Vinaora Visitors Counter">Visitors Counter 1.6</a></div></div>
+<div>
+	<%assign var='ol' value=Online_model::get_online()%>
+	<%assign var='totalol' value=Online_model::explode_number($ol.total_ol)%>
+	
+   <div style="text-align: center;padding-top:5px">
+   <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/<%$totalol[0]%>.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter">
+   <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/<%$totalol[1]%>.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter">
+   <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/<%$totalol[2]%>.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter">
+   <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/<%$totalol[3]%>.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter">
+   <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/<%$totalol[4]%>.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter">
+   <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/<%$totalol[5]%>.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter">
+   <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/<%$totalol[6]%>.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter">
+   <img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/<%$totalol[7]%>.png" style="margin:0; border:0; " alt="mod_vvisit_counter" title="Vinaora Visitors Counter"></div>
+   <div>   	
+      <table cellpadding="0" cellspacing="0" style="margin: 3px; text-align: center; align: center; width: 90%;" class="vinaora_counter">
+         <tbody align="center">
+         	<tr align="left">
+               <td><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/vyesterday.png" alt="mod_vvisit_counter" title="2017-04-19"></td>
+               <td>Đang online</td>
+               <td align="right"><%$ol.current_ol%></td>
+            </tr>
+            <tr align="left">
+               <td><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/vtoday.png" alt="mod_vvisit_counter" title="2017-04-20"></td>
+               <td>Hôm nay</td>
+               <td align="right"><%$ol.day_ol%></td>
+            </tr>
+            
+            <tr align="left">
+               <td><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/vweek.png" alt="mod_vvisit_counter" title="2017-04-16 -&gt; 2017-04-20"></td>
+               <td>Trong tuần</td>
+               <td align="right"><%$ol.week_ol%></td>
+            </tr>
+            <!--<tr align="left">
+               <td><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/vlweek.png" alt="mod_vvisit_counter" title="2017-04-09 -&gt; 2017-04-16"></td>
+               <td>Tuần trước</td>
+               <td align="right">19386</td>
+            </tr>-->
+            <tr align="left">
+               <td><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/vmonth.png" alt="mod_vvisit_counter" title="2017-04-01 -&gt; 2017-04-20"></td>
+               <td>Trong tháng</td>
+               <td align="right"><%$ol.month_ol%></td>
+            </tr>
+            <!--<tr align="left">
+               <td><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/vlmonth.png" alt="mod_vvisit_counter" title="2017-03-01 -&gt; 2017-04-01"></td>
+               <td>Tháng trước</td>
+               <td align="right">81317</td>
+            </tr>-->
+            <tr align="left">
+               <td><img src="<%$smarty.const.ACW_BASE_URL_TEMPLATE%>/images/vall.png" alt="mod_vvisit_counter" title="Visitors Counter"></td>
+               <td>Tất cả</td>
+               <td align="right"><%$ol.total_ol%></td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+   <!--<hr style="width: 90%">
+   <div style="text-align: center;">Online (20 minutes ago): 13<br>Your IP: 42.113.164.200<br>SAFARI 537.36, WINDOWS<br> Now is: 2017-04-20 20:34</div>
+   <div style="text-align: center; display:none"><a href="http://vinaora.com/" target="_self" title="Vinaora Visitors Counter">Visitors Counter 1.6</a></div>-->
+</div>
     </div>
 </div>
 
